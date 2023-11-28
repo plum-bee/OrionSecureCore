@@ -66,5 +66,14 @@ namespace SWUserControls
             set { _controlID = value; }
         }
 
+        private void txtCode_Leave(object sender, EventArgs e)
+        {
+            ValidateCode();
+        }
+
+        public void ValidateCode()
+        {
+
+        }
     }
 }
