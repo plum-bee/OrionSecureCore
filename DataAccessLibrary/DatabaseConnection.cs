@@ -37,7 +37,7 @@ namespace DataAccessLibrary
             }
         }
 
-        protected DataSet RetrieveAllData(string tableName)
+        public DataSet RetrieveAllData(string tableName)
         {
             OpenSqlConnection();
 
@@ -54,7 +54,7 @@ namespace DataAccessLibrary
             return _dataSet;
         }
 
-        protected DataSet RetrieveDataUsingQuery(string sqlQuery)
+        public DataSet RetrieveDataUsingQuery(string sqlQuery)
         {
             OpenSqlConnection();
 
@@ -70,7 +70,7 @@ namespace DataAccessLibrary
             return _dataSet;
         }
 
-        protected DataSet RetrieveDataUsingQuery(string sqlQuery, string tableName)
+        public DataSet RetrieveDataUsingQuery(string sqlQuery, string tableName)
         {
             OpenSqlConnection();
 
@@ -86,7 +86,7 @@ namespace DataAccessLibrary
             return _dataSet;
         }
 
-        protected void UpdateData(string sqlQuery, DataSet dataSetToUpdate)
+        public void UpdateData(string sqlQuery, DataSet dataSetToUpdate)
         {
             OpenSqlConnection();
 
@@ -99,7 +99,7 @@ namespace DataAccessLibrary
             CloseSqlConnection();
         }
 
-        protected void ExecuteSqlNonQuery(string sqlQuery)
+        public void ExecuteSqlNonQuery(string sqlQuery)
         {
             OpenSqlConnection();
 
