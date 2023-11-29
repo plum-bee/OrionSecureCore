@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrionSecureCore", "OrionSec
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SWUserControls", "SWUserControls\SWUserControls.csproj", "{615B62D9-497E-4B57-8C25-EDD6F5787B9F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLibrary", "DataAccessLibrary\DataAccessLibrary.csproj", "{3B0CDDC0-8477-4A85-BD65-F62F71F04F8A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{615B62D9-497E-4B57-8C25-EDD6F5787B9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{615B62D9-497E-4B57-8C25-EDD6F5787B9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{615B62D9-497E-4B57-8C25-EDD6F5787B9F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B0CDDC0-8477-4A85-BD65-F62F71F04F8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B0CDDC0-8477-4A85-BD65-F62F71F04F8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B0CDDC0-8477-4A85-BD65-F62F71F04F8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B0CDDC0-8477-4A85-BD65-F62F71F04F8A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
