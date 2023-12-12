@@ -17,22 +17,21 @@ namespace OrionSecureCore
         {
             InitializeComponent();
             connectionComponent = new SWDatabaseConnection();
+            hashUser = new HashUser();
         }
 
         private string login;
         private string password;
-
+        private const string DEFAULT_PASS = "12345aA";
         private SWDatabaseConnection connectionComponent;
+        private HashUser hashUser;
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
             login = txtUserLogin.Text;
             password = txtPasswordLogin.Text;
 
-            string query = "SELECT * FROM Users WHERE Login = 'guti'";
-            SqlParameter[] parameters = {
-                new SqlParameter("@Login", SqlDbType.VarChar) { Value = login }
-            };
+            string query = $"SELECT * FROM Users WHERE Login = '{login}'";
 
             DataSet usersDataset = connectionComponent.RetrieveDataUsingQuery(query);
 
@@ -40,12 +39,26 @@ namespace OrionSecureCore
 
             if (usersTable.Rows.Count > 0)
             {
-                MessageBox.Show("Login successful");
+                DataRow userRow = usersTable.Rows[0];
+                string storedHash = userRow["HashCode"].ToString();
+
+                if (storedHash == DEFAULT_PASS)
+                {
+
+                    
+                } else
+                {
+                    password = hashUser.validatePassword(password);
+                    if (password == storedHash)
+                    {
+                        MessageBox.Show("Login successfull");
+                    }
+                }
+
             }
             else
             {
-                // No user with the entered login found
-                MessageBox.Show("Login failed. User not found");
+                MessageBox.Show("Login Failed, Try Again Please.");
             }
 
 
