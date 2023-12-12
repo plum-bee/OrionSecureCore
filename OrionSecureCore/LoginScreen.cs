@@ -20,16 +20,14 @@ namespace OrionSecureCore
             hashUser = new HashUser();
         }
 
-        private string login;
-        private string password;
         private const string DEFAULT_PASS = "12345aA";
         private SWDatabaseConnection connectionComponent;
         private HashUser hashUser;
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            login = txtUserLogin.Text;
-            password = txtPasswordLogin.Text;
+            string login = txtUserLogin.Text;
+            string password = txtPasswordLogin.Text;
 
             string query = $"SELECT * FROM Users WHERE Login = '{login}'";
 
@@ -42,29 +40,42 @@ namespace OrionSecureCore
                 DataRow userRow = usersTable.Rows[0];
                 string storedHash = userRow["HashCode"].ToString();
 
-                if (storedHash == DEFAULT_PASS)
+                if (IsDefaultPassword(password, storedHash))
                 {
-
-                    
-                } else
-                {
-                    password = hashUser.validatePassword(password);
-                    if (password == storedHash)
-                    {
-                        MessageBox.Show("Login successfull");
-                    }
+                    RestorePassword restorePasswordForm = new RestorePassword();
+                    restorePasswordForm.ShowDialog();
                 }
-
+                else if (IsPasswordValid(password, storedHash))
+                {
+                    MessageBox.Show("Login successful");
+                }
+                else
+                {
+                    ShowLoginFailedMessage();
+                }
             }
             else
             {
-                MessageBox.Show("Login Failed, Try Again Please.");
+                ShowLoginFailedMessage();
             }
-
-
-
-
         }
+
+        private bool IsDefaultPassword(string password, string storedHash)
+        {
+            return storedHash == DEFAULT_PASS && password == DEFAULT_PASS;
+        }
+
+        private bool IsPasswordValid(string password, string storedHash)
+        {
+            password = hashUser.validatePassword(password);
+            return password == storedHash;
+        }
+
+        private void ShowLoginFailedMessage()
+        {
+            MessageBox.Show("Login Failed, Try Again Please.");
+        }
+
 
     }
 }
