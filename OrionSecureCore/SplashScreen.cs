@@ -23,7 +23,7 @@ namespace OrionSecureCore
         {
 
             count++;
-            if (count > 5)
+            if (count > 2)
             {
                 tmrSplash.Enabled = false;
                 LoginScreen lgn = new LoginScreen();
@@ -33,7 +33,7 @@ namespace OrionSecureCore
             }
             else
             {
-                pgbSplash.Value += 20;
+                pgbSplash.Value += 50;
             }
         }
     }
