@@ -12,8 +12,9 @@ namespace DataAccessLibrary
     public abstract class DatabaseConnectionBase
     {
         private readonly string _connectionString;
-        private SqlConnection _sqlConnection;
+        private readonly SqlConnection _sqlConnection;
         private DataSet _dataSet;
+        private SqlTransaction _transaction;
 
         public DatabaseConnectionBase()
         {
@@ -100,15 +101,64 @@ namespace DataAccessLibrary
         }
 
         public void ExecuteSqlNonQuery(string sqlQuery)
+    {
+        OpenSqlConnection();
+
+        using (SqlCommand command = new SqlCommand(sqlQuery, _sqlConnection, _transaction))
         {
-            OpenSqlConnection();
+            command.ExecuteNonQuery();
+        }
 
-            using (SqlCommand command = new SqlCommand(sqlQuery, _sqlConnection))
-            {
-                command.ExecuteNonQuery();
-            }
-
+        if (_transaction == null)
+        {
             CloseSqlConnection();
         }
+    }
+
+        public SqlCommand GenerateQuery(string tableName, Dictionary<string, string> fieldValues)
+        {
+            StringBuilder query = new StringBuilder($"SELECT * FROM {tableName} WHERE ");
+
+            int parameterCount = 0;
+            foreach (KeyValuePair<string, string> field in fieldValues)
+            {
+                if (parameterCount > 0)
+                {
+                    query.Append(" AND ");
+                }
+                    
+                query.Append($"{field.Key} = @{field.Key}");
+                parameterCount++;
+            }
+
+
+            SqlCommand command = new SqlCommand(query.ToString(), _sqlConnection);
+            foreach (KeyValuePair<string, string> field in fieldValues)
+            {
+                command.Parameters.AddWithValue($"@{field.Key}", field.Value);
+            }
+
+            return command;
+        }
+
+        public void BeginTransaction()
+        {
+            OpenSqlConnection();
+            _transaction = _sqlConnection.BeginTransaction();
+        }
+
+        public void CommitTransaction()
+        {
+            _transaction?.Commit();
+            CloseSqlConnection();
+        }
+
+        public void RollbackTransaction()
+        {
+            _transaction?.Rollback();
+            CloseSqlConnection();
+        }
+
+
     }
 }
