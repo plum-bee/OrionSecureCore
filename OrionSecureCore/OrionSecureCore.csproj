@@ -32,10 +32,10 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <NoWin32Manifest>true</NoWin32Manifest>
-  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DataAccessLibrary">
+      <HintPath>..\DataAccessLibrary\bin\Debug\DataAccessLibrary.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HashUser.cs" />
     <Compile Include="LoginScreen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -69,6 +70,7 @@
     <Compile Include="SplashScreen.Designer.cs">
       <DependentUpon>SplashScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="SWDatabaseConnection.cs" />
     <EmbeddedResource Include="LoginScreen.resx">
       <DependentUpon>LoginScreen.cs</DependentUpon>
     </EmbeddedResource>
@@ -102,7 +104,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SWUserControls\SWUserControls.csproj">
-      <Project>{615b62d9-497e-4b57-8c25-edd6f5787b9f}</Project>
+      <Project>{615B62D9-497E-4B57-8C25-EDD6F5787B9F}</Project>
       <Name>SWUserControls</Name>
     </ProjectReference>
   </ItemGroup>

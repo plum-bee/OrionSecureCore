@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace OrionSecureCore
 {
@@ -15,30 +16,41 @@ namespace OrionSecureCore
         public LoginScreen()
         {
             InitializeComponent();
+            connectionComponent = new SWDatabaseConnection();
         }
+
+        private string login;
+        private string password;
+
+        private SWDatabaseConnection connectionComponent;
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            string user = txtUserLogin.Text;
-            string password = txtPasswordLogin.Text;
+            login = txtUserLogin.Text;
+            password = txtPasswordLogin.Text;
 
-            // Check the hardcoded credentials
-            if (user == "lumizor" && password == "lumizor")
+            string query = "SELECT * FROM Users WHERE Login = 'guti'";
+            SqlParameter[] parameters = {
+                new SqlParameter("@Login", SqlDbType.VarChar) { Value = login }
+            };
+
+            DataSet usersDataset = connectionComponent.RetrieveDataUsingQuery(query);
+
+            DataTable usersTable = usersDataset.Tables[0];
+
+            if (usersTable.Rows.Count > 0)
             {
-                // Hide the login form
-                this.Hide();
-
-                // Show the main app form
-                MainScreen mainForm = new MainScreen();
-                mainForm.Show(); 
-
-
+                MessageBox.Show("Login successful");
             }
             else
             {
-                MessageBox.Show("Invalid credentials. Please try again.");
-                txtPasswordLogin.Clear();
+                // No user with the entered login found
+                MessageBox.Show("Login failed. User not found");
             }
+
+
+
+
         }
 
     }

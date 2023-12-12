@@ -35,14 +35,14 @@ namespace SWUserControls
             // 
             // txtDescription
             // 
-            this.txtDescription.Location = new System.Drawing.Point(271, 32);
+            this.txtDescription.Location = new System.Drawing.Point(160, 32);
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(172, 22);
             this.txtDescription.TabIndex = 0;
             // 
             // txtCode
             // 
-            this.txtCode.Location = new System.Drawing.Point(207, 32);
+            this.txtCode.Location = new System.Drawing.Point(44, 32);
             this.txtCode.Name = "txtCode";
             this.txtCode.Size = new System.Drawing.Size(58, 22);
             this.txtCode.TabIndex = 1;

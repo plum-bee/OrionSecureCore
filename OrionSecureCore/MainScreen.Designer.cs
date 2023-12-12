@@ -29,21 +29,24 @@ namespace OrionSecureCore
         /// </summary>
         private void InitializeComponent()
         {
+            this.performanceCounter1 = new System.Diagnostics.PerformanceCounter();
+            ((System.ComponentModel.ISupportInitialize)(this.performanceCounter1)).BeginInit();
             this.SuspendLayout();
             // 
             // MainScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1243, 579);
             this.Name = "MainScreen";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            ((System.ComponentModel.ISupportInitialize)(this.performanceCounter1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private System.Diagnostics.PerformanceCounter performanceCounter1;
     }
 }
 
