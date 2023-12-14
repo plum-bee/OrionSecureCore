@@ -23,10 +23,11 @@ namespace OrionSecureCore
         private const string DEFAULT_PASS = "12345aA";
         private SWDatabaseConnection connectionComponent;
         private HashUser hashUser;
+        private string login;
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            string login = txtUserLogin.Text;
+            login = txtUserLogin.Text;
             string password = txtPasswordLogin.Text;
 
             string query = $"SELECT * FROM Users WHERE Login = '{login}'";
@@ -38,11 +39,12 @@ namespace OrionSecureCore
             if (usersTable.Rows.Count > 0)
             {
                 DataRow userRow = usersTable.Rows[0];
-                string storedHash = userRow["HashCode"].ToString();
+                string storedHash = userRow["Password"].ToString();
 
                 if (IsDefaultPassword(password, storedHash))
                 {
                     RestorePassword restorePasswordForm = new RestorePassword();
+                    restorePasswordForm.Login = login;
                     restorePasswordForm.ShowDialog();
                 }
                 else if (IsPasswordValid(password, storedHash))
@@ -67,8 +69,26 @@ namespace OrionSecureCore
 
         private bool IsPasswordValid(string password, string storedHash)
         {
-            password = hashUser.validatePassword(password);
+            string salt = GetSaltFromDatabase(login);
+            password = hashUser.ValidatePassword(password, salt);
             return password == storedHash;
+        }
+
+        private string GetSaltFromDatabase(string login)
+        {
+            string query = $"SELECT Salt FROM Users WHERE Login = '{login}'";
+
+            DataSet saltDataset = connectionComponent.RetrieveDataUsingQuery(query);
+
+            DataTable saltTable = saltDataset.Tables[0];
+
+            if (saltTable.Rows.Count > 0)
+            {
+                DataRow userRow = saltTable.Rows[0];
+                return userRow["Salt"].ToString();
+            }
+
+            return null;
         }
 
         private void ShowLoginFailedMessage()
