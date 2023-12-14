@@ -14,8 +14,6 @@ namespace DataAccessLibrary
         private readonly string _connectionString;
         private readonly SqlConnection _sqlConnection;
         private DataSet _dataSet;
-        private SqlTransaction _transaction;
-
         public DatabaseConnectionBase()
         {
             _connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
@@ -101,19 +99,16 @@ namespace DataAccessLibrary
         }
 
         public void ExecuteSqlNonQuery(string sqlQuery)
-    {
-        OpenSqlConnection();
-
-        using (SqlCommand command = new SqlCommand(sqlQuery, _sqlConnection, _transaction))
         {
-            command.ExecuteNonQuery();
-        }
+            OpenSqlConnection();
 
-        if (_transaction == null)
-        {
+            using (SqlCommand command = new SqlCommand(sqlQuery, _sqlConnection))
+            {
+                command.ExecuteNonQuery();
+            }
+
             CloseSqlConnection();
         }
-    }
 
         public SqlCommand GenerateQuery(string tableName, Dictionary<string, string> fieldValues)
         {
@@ -126,11 +121,10 @@ namespace DataAccessLibrary
                 {
                     query.Append(" AND ");
                 }
-                    
+
                 query.Append($"{field.Key} = @{field.Key}");
                 parameterCount++;
             }
-
 
             SqlCommand command = new SqlCommand(query.ToString(), _sqlConnection);
             foreach (KeyValuePair<string, string> field in fieldValues)
@@ -141,24 +135,39 @@ namespace DataAccessLibrary
             return command;
         }
 
-        public void BeginTransaction()
+        public void ExecuteTransaction(SqlCommand command)
         {
             OpenSqlConnection();
-            _transaction = _sqlConnection.BeginTransaction();
-        }
 
-        public void CommitTransaction()
-        {
-            _transaction?.Commit();
-            CloseSqlConnection();
-        }
+            SqlTransaction transaction = null;
 
-        public void RollbackTransaction()
-        {
-            _transaction?.Rollback();
-            CloseSqlConnection();
-        }
+            try
+            {
+                transaction = _sqlConnection.BeginTransaction();
 
+                command.Connection = _sqlConnection;
+                command.Transaction = transaction;
+
+                command.ExecuteNonQuery();
+
+                transaction.Commit();
+            }
+            catch (Exception ex)
+            {
+                try
+                {
+                    transaction?.Rollback();
+                }
+                catch
+                {
+                    throw ex;
+                }
+            }
+            finally
+            {
+                CloseSqlConnection();
+            }
+        }
 
     }
 }
