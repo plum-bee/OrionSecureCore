@@ -33,7 +33,7 @@ namespace OrionSecureCore
         {
             if (pnlOpen)
             {
-                // contrae el panel
+                
                 pnlMenu.Width -= 10;
                 if (pnlMenu.Width <= 0)
                 {
@@ -43,7 +43,7 @@ namespace OrionSecureCore
             }
             else
             {
-                // expande el panel
+                
                 pnlMenu.Width += 10;
                 if (pnlMenu.Width >= 200)
                 {
@@ -51,6 +51,11 @@ namespace OrionSecureCore
                     pnlOpen = true;
                 }
             }
+        }
+
+        private void btnMenu_Click(object sender, EventArgs e)
+        {
+            tmr1.Start();
         }
     }
 }
