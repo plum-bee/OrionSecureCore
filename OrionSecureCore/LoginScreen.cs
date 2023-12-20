@@ -49,7 +49,12 @@ namespace OrionSecureCore
                 }
                 else if (IsPasswordValid(password, storedHash))
                 {
-                    MessageBox.Show("Login successful");
+
+                    MainScreen mainScreen = new MainScreen();
+
+                    this.Hide();
+
+                    mainScreen.Show();
                 }
                 else
                 {
