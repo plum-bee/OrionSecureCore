@@ -1,41 +1,36 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Security.Cryptography;
+using System.Text;
 
 namespace OrionSecureCore
 {
-    class HashUser
+    public class HashUser
     {
-        private const string PASSWORD = "12345aA";
-        public string createSalt()
+        private string _hashedSalt, _hashedPassword;
+
+        public string CreateSalt()
         {
-            string salt = DateTime.Now.ToString("yyyyMMdd");
-
-            salt = hashString(salt);
-
-            return salt;
+            string currentDate = GetCurrentDate("yyyyMMdd");
+            return _hashedSalt = HashString(currentDate);
         }
 
-        public string createPassword(string salt)
+        public string CreatePassword(string password, string salt)
         {
-            string password = hashString(salt + PASSWORD);
-
-            return password;
+            _hashedPassword = HashString(password + salt);
+            return _hashedPassword;
         }
 
-        public string validatePassword(string password)
+        public string ValidatePassword(string password, string salt)
         {
-            string salt = hashString(DateTime.Now.ToString("yyyyMMdd"));
-
-            password = hashString(salt + password);
-
-            return password;
+            return HashString(password + salt);
         }
 
-        private static string hashString(string stringToHash)
+        private string GetCurrentDate(string dateFormat)
+        {
+            return DateTime.Now.ToString(dateFormat);
+        }
+
+        private static string HashString(string stringToHash)
         {
             using (SHA256 hash = SHA256.Create())
             {

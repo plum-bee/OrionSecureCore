@@ -12,9 +12,8 @@ namespace DataAccessLibrary
     public abstract class DatabaseConnectionBase
     {
         private readonly string _connectionString;
-        private SqlConnection _sqlConnection;
+        private readonly SqlConnection _sqlConnection;
         private DataSet _dataSet;
-
         public DatabaseConnectionBase()
         {
             _connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
@@ -110,5 +109,65 @@ namespace DataAccessLibrary
 
             CloseSqlConnection();
         }
+
+        public SqlCommand GenerateQuery(string tableName, Dictionary<string, string> fieldValues)
+        {
+            StringBuilder query = new StringBuilder($"SELECT * FROM {tableName} WHERE ");
+
+            int parameterCount = 0;
+            foreach (KeyValuePair<string, string> field in fieldValues)
+            {
+                if (parameterCount > 0)
+                {
+                    query.Append(" AND ");
+                }
+
+                query.Append($"{field.Key} = @{field.Key}");
+                parameterCount++;
+            }
+
+            SqlCommand command = new SqlCommand(query.ToString(), _sqlConnection);
+            foreach (KeyValuePair<string, string> field in fieldValues)
+            {
+                command.Parameters.AddWithValue($"@{field.Key}", field.Value);
+            }
+
+            return command;
+        }
+
+        public void ExecuteTransaction(SqlCommand command)
+        {
+            OpenSqlConnection();
+
+            SqlTransaction transaction = null;
+
+            try
+            {
+                transaction = _sqlConnection.BeginTransaction();
+
+                command.Connection = _sqlConnection;
+                command.Transaction = transaction;
+
+                command.ExecuteNonQuery();
+
+                transaction.Commit();
+            }
+            catch (Exception ex)
+            {
+                try
+                {
+                    transaction?.Rollback();
+                }
+                catch
+                {
+                    throw ex;
+                }
+            }
+            finally
+            {
+                CloseSqlConnection();
+            }
+        }
+
     }
 }
