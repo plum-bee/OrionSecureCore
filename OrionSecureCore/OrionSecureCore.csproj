@@ -21,7 +21,7 @@
     <OutputPath>App\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <WarningLevel>0</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -49,6 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="RestorePassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RestorePassword.Designer.cs">
+      <DependentUpon>RestorePassword.cs</DependentUpon>
+    </Compile>
     <Compile Include="HashUser.cs" />
     <Compile Include="LoginScreen.cs">
       <SubType>Form</SubType>
@@ -86,6 +92,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="RestorePassword.resx">
+      <DependentUpon>RestorePassword.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SplashScreen.resx">
       <DependentUpon>SplashScreen.cs</DependentUpon>
     </EmbeddedResource>
@@ -107,6 +116,10 @@
       <Project>{615B62D9-497E-4B57-8C25-EDD6F5787B9F}</Project>
       <Name>SWUserControls</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="images\check-mark.png" />
+    <Content Include="images\cross.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
