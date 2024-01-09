@@ -16,8 +16,8 @@ namespace SpeciesManagement
         public SpeciesManagement()
         {
             InitializeComponent();
-            SetTableName("Species");
-            SetQuery("Select * from Species");
+            SetTableName("SPECIES");
+            SetQuery("SELECT * SPECIES");
         }
     }
 }
