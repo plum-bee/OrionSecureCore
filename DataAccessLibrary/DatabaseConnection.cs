@@ -9,12 +9,12 @@ using System.Configuration;
 
 namespace DataAccessLibrary
 {
-    public abstract class DatabaseConnectionBase
+    public abstract class DatabaseConnection
     {
         private readonly string _connectionString;
         private readonly SqlConnection _sqlConnection;
         private DataSet _dataSet;
-        public DatabaseConnectionBase()
+        public DatabaseConnection()
         {
             _connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
             _sqlConnection = new SqlConnection(_connectionString);
@@ -36,7 +36,7 @@ namespace DataAccessLibrary
             }
         }
 
-        public DataSet RetrieveAllData(string tableName)
+        public DataSet RetrieveAllDataFromTable(string tableName)
         {
             OpenSqlConnection();
 
