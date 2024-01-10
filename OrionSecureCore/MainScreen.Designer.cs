@@ -33,8 +33,8 @@ namespace OrionSecureCore
             this.tmr1 = new System.Windows.Forms.Timer(this.components);
             this.btnMenu = new System.Windows.Forms.Button();
             this.pnlMenu = new System.Windows.Forms.Panel();
-            this.btn1 = new System.Windows.Forms.Button();
-            this.btn2 = new System.Windows.Forms.Button();
+            this.pnlMainContent = new System.Windows.Forms.Panel();
+            this.formLauncher1 = new SWUserControls.FormLauncher();
             this.pnlMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,37 +54,37 @@ namespace OrionSecureCore
             // 
             // pnlMenu
             // 
-            this.pnlMenu.Controls.Add(this.btn2);
-            this.pnlMenu.Controls.Add(this.btn1);
+            this.pnlMenu.Controls.Add(this.formLauncher1);
             this.pnlMenu.Location = new System.Drawing.Point(-5, 63);
             this.pnlMenu.Name = "pnlMenu";
             this.pnlMenu.Size = new System.Drawing.Size(254, 452);
             this.pnlMenu.TabIndex = 3;
             // 
-            // btn1
+            // pnlMainContent
             // 
-            this.btn1.Location = new System.Drawing.Point(5, 34);
-            this.btn1.Name = "btn1";
-            this.btn1.Size = new System.Drawing.Size(246, 64);
-            this.btn1.TabIndex = 0;
-            this.btn1.Text = "button1";
-            this.btn1.UseVisualStyleBackColor = true;
+            this.pnlMainContent.Location = new System.Drawing.Point(255, 12);
+            this.pnlMainContent.Name = "pnlMainContent";
+            this.pnlMainContent.Size = new System.Drawing.Size(950, 535);
+            this.pnlMainContent.TabIndex = 4;
             // 
-            // btn2
+            // formLauncher1
             // 
-            this.btn2.Location = new System.Drawing.Point(5, 94);
-            this.btn2.Name = "btn2";
-            this.btn2.Size = new System.Drawing.Size(246, 64);
-            this.btn2.TabIndex = 1;
-            this.btn2.Text = "button2";
-            this.btn2.UseVisualStyleBackColor = true;
+            this.formLauncher1.Classe = "SpeciesManagement.exe";
+            this.formLauncher1.Descripcio = "Species";
+            this.formLauncher1.Form = "SpeciesManagement";
+            this.formLauncher1.Location = new System.Drawing.Point(5, 61);
+            this.formLauncher1.Name = "formLauncher1";
+            this.formLauncher1.PictureBoxImage = null;
+            this.formLauncher1.Size = new System.Drawing.Size(426, 194);
+            this.formLauncher1.TabIndex = 0;
             // 
             // MainScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(1086, 768);
+            this.ClientSize = new System.Drawing.Size(1217, 768);
+            this.Controls.Add(this.pnlMainContent);
             this.Controls.Add(this.pnlMenu);
             this.Controls.Add(this.btnMenu);
             this.Location = new System.Drawing.Point(0, 50);
@@ -98,8 +98,8 @@ namespace OrionSecureCore
         private System.Windows.Forms.Timer tmr1;
         private System.Windows.Forms.Button btnMenu;
         private System.Windows.Forms.Panel pnlMenu;
-        private System.Windows.Forms.Button btn2;
-        private System.Windows.Forms.Button btn1;
+        private System.Windows.Forms.Panel pnlMainContent;
+        private SWUserControls.FormLauncher formLauncher1;
     }
 }
 

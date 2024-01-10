@@ -27,6 +27,8 @@ namespace OrionSecureCore
 
             tmr1.Interval = 33; // Cambia esto para ajustar la velocidad de la animación
             tmr1.Tick += tmr1_Tick;
+
+            
         }
 
         private void tmr1_Tick(object sender, EventArgs e)
@@ -57,5 +59,6 @@ namespace OrionSecureCore
         {
             tmr1.Start();
         }
+
     }
 }
