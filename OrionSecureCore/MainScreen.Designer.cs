@@ -33,8 +33,8 @@ namespace OrionSecureCore
             this.tmr1 = new System.Windows.Forms.Timer(this.components);
             this.btnMenu = new System.Windows.Forms.Button();
             this.pnlMenu = new System.Windows.Forms.Panel();
-            this.pnlMainContent = new System.Windows.Forms.Panel();
             this.formLauncher1 = new SWUserControls.FormLauncher();
+            this.pnlMainContent = new System.Windows.Forms.Panel();
             this.pnlMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,16 +60,9 @@ namespace OrionSecureCore
             this.pnlMenu.Size = new System.Drawing.Size(254, 452);
             this.pnlMenu.TabIndex = 3;
             // 
-            // pnlMainContent
-            // 
-            this.pnlMainContent.Location = new System.Drawing.Point(255, 12);
-            this.pnlMainContent.Name = "pnlMainContent";
-            this.pnlMainContent.Size = new System.Drawing.Size(950, 535);
-            this.pnlMainContent.TabIndex = 4;
-            // 
             // formLauncher1
             // 
-            this.formLauncher1.Classe = "SpeciesManagement.exe";
+            this.formLauncher1.Classe = "SpeciesManagement";
             this.formLauncher1.Descripcio = "Species";
             this.formLauncher1.Form = "SpeciesManagement";
             this.formLauncher1.Location = new System.Drawing.Point(5, 61);
@@ -77,6 +70,13 @@ namespace OrionSecureCore
             this.formLauncher1.PictureBoxImage = null;
             this.formLauncher1.Size = new System.Drawing.Size(426, 194);
             this.formLauncher1.TabIndex = 0;
+            // 
+            // pnlMainContent
+            // 
+            this.pnlMainContent.Location = new System.Drawing.Point(255, 12);
+            this.pnlMainContent.Name = "pnlMainContent";
+            this.pnlMainContent.Size = new System.Drawing.Size(950, 535);
+            this.pnlMainContent.TabIndex = 4;
             // 
             // MainScreen
             // 

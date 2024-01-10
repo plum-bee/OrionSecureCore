@@ -7,7 +7,7 @@ using DataAccessLibrary;
 
 namespace OrionSecureCore
 {
-    public class SWDatabaseConnection : DatabaseConnectionBase
+    public class SWDatabaseConnection : DatabaseConnection
     {
     }
 }
