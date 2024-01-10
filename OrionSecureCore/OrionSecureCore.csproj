@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MainScreenCopy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainScreenCopy.Designer.cs">
+      <DependentUpon>MainScreenCopy.cs</DependentUpon>
+    </Compile>
     <Compile Include="RestorePassword.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,6 +82,9 @@
     <Compile Include="SWDatabaseConnection.cs" />
     <EmbeddedResource Include="LoginScreen.resx">
       <DependentUpon>LoginScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainScreenCopy.resx">
+      <DependentUpon>MainScreenCopy.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainScreen.resx">
       <DependentUpon>MainScreen.cs</DependentUpon>
