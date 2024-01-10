@@ -17,7 +17,13 @@ namespace SWUserControls
         private string classe;
         private string form;
         private string descripcio = "Default";
+        private Panel displayPanel;
 
+        public Panel DisplayPanel
+        {
+            get { return displayPanel; }
+            set { displayPanel = value; }
+        }
         public Image PictureBoxImage
         {
             get { return ptrIcon.Image; }
@@ -62,10 +68,18 @@ namespace SWUserControls
                     if (formType != null && formType.IsSubclassOf(typeof(Form)))
                     {
                         Form form = (Form)Activator.CreateInstance(formType);
-
                         form.Text = Descripcio;
 
-                        form.Show();
+                        if (DisplayPanel != null)
+                        {
+                            DisplayPanel.Controls.Clear(); 
+                            form.TopLevel = false;
+                            form.FormBorderStyle = FormBorderStyle.None;
+                            form.Dock = DockStyle.Fill;
+                            DisplayPanel.Controls.Add(form);
+                            form.BringToFront();
+                            form.Show();
+                        }
                     }
                     else
                     {
