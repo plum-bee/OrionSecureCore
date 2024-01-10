@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\Da
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpeciesManagement", "SpeciesManagement\SpeciesManagement.csproj", "{457730E8-3D8A-463A-908B-05007E73A748}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserManagement", "UserManagement\UserManagement.csproj", "{2EC3977B-359C-48D8-A0A3-803F1117550E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{457730E8-3D8A-463A-908B-05007E73A748}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{457730E8-3D8A-463A-908B-05007E73A748}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{457730E8-3D8A-463A-908B-05007E73A748}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2EC3977B-359C-48D8-A0A3-803F1117550E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EC3977B-359C-48D8-A0A3-803F1117550E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EC3977B-359C-48D8-A0A3-803F1117550E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EC3977B-359C-48D8-A0A3-803F1117550E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
