@@ -19,5 +19,14 @@ namespace UserManagement
             SetTableName("USERS");
             SetQuery("SELECT * USERS");
         }
+
+        protected override void CustomizeDataGridView()
+        {
+            base.CustomizeDataGridView();
+
+           // MyTable.Columns["idSpecie"].Visible = false;
+           // MyTable.Columns["CodeSpecie"].HeaderText = "Codi";
+           // MyTable.Columns["DescSpecie"].HeaderText = "Descripcio";
+        }
     }
 }

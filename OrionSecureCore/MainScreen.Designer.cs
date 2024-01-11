@@ -33,8 +33,8 @@ namespace OrionSecureCore
             this.tmr1 = new System.Windows.Forms.Timer(this.components);
             this.btnMenu = new System.Windows.Forms.Button();
             this.pnlMenu = new System.Windows.Forms.Panel();
-            this.formLauncher1 = new SWUserControls.FormLauncher();
             this.pnlMainContent = new System.Windows.Forms.Panel();
+            this.frmlUsers = new SWUserControls.FormLauncher();
             this.frmlSpecies = new SWUserControls.FormLauncher();
             this.pnlMenu.SuspendLayout();
             this.SuspendLayout();
@@ -55,24 +55,12 @@ namespace OrionSecureCore
             // 
             // pnlMenu
             // 
-            this.pnlMenu.Controls.Add(this.formLauncher1);
+            this.pnlMenu.Controls.Add(this.frmlUsers);
             this.pnlMenu.Controls.Add(this.frmlSpecies);
             this.pnlMenu.Location = new System.Drawing.Point(-5, 63);
             this.pnlMenu.Name = "pnlMenu";
             this.pnlMenu.Size = new System.Drawing.Size(254, 452);
             this.pnlMenu.TabIndex = 3;
-            // 
-            // formLauncher1
-            // 
-            this.formLauncher1.Classe = "UserManagement";
-            this.formLauncher1.Descripcio = "Users";
-            this.formLauncher1.DisplayPanel = this.pnlMainContent;
-            this.formLauncher1.Form = "UserManagement";
-            this.formLauncher1.Location = new System.Drawing.Point(3, 235);
-            this.formLauncher1.Name = "formLauncher1";
-            this.formLauncher1.PictureBoxImage = null;
-            this.formLauncher1.Size = new System.Drawing.Size(456, 194);
-            this.formLauncher1.TabIndex = 1;
             // 
             // pnlMainContent
             // 
@@ -80,6 +68,18 @@ namespace OrionSecureCore
             this.pnlMainContent.Name = "pnlMainContent";
             this.pnlMainContent.Size = new System.Drawing.Size(1085, 610);
             this.pnlMainContent.TabIndex = 4;
+            // 
+            // frmlUsers
+            // 
+            this.frmlUsers.Classe = "UserManagement";
+            this.frmlUsers.Descripcio = "Users";
+            this.frmlUsers.DisplayPanel = this.pnlMainContent;
+            this.frmlUsers.Form = "UserManagement";
+            this.frmlUsers.Location = new System.Drawing.Point(3, 235);
+            this.frmlUsers.Name = "frmlUsers";
+            this.frmlUsers.PictureBoxImage = null;
+            this.frmlUsers.Size = new System.Drawing.Size(456, 194);
+            this.frmlUsers.TabIndex = 1;
             // 
             // frmlSpecies
             // 
@@ -115,7 +115,7 @@ namespace OrionSecureCore
         private System.Windows.Forms.Panel pnlMenu;
         private System.Windows.Forms.Panel pnlMainContent;
         private SWUserControls.FormLauncher frmlSpecies;
-        private SWUserControls.FormLauncher formLauncher1;
+        private SWUserControls.FormLauncher frmlUsers;
     }
 }
 
