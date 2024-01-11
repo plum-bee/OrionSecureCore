@@ -97,6 +97,7 @@ namespace DataAccessLibrary
             }
 
             CloseSqlConnection();
+
         }
 
         public void ExecuteSqlNonQuery(string sqlQuery)
