@@ -17,7 +17,7 @@ namespace UserManagement
         {
             InitializeComponent();
             SetTableName("USERS");
-            SetQuery("SELECT * USERS");
+            SetQuery("SELECT * FROM USERS");
         }
     }
 }
