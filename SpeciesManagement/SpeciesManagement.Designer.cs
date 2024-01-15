@@ -80,6 +80,7 @@ namespace SpeciesManagement
             this.Controls.Add(this.txtCodi);
             this.Name = "SpeciesManagement";
             this.Text = "Form1";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Controls.SetChildIndex(this.txtCodi, 0);
             this.Controls.SetChildIndex(this.txtDescripcio, 0);
             this.Controls.SetChildIndex(this.label1, 0);
