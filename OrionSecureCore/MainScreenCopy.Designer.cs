@@ -76,10 +76,10 @@ namespace OrionSecureCore
             // 
             // formLauncher1
             // 
-            this.formLauncher1.Classe = "SpeciesManagement";
+            this.formLauncher1.Classe = "UserManagement";
             this.formLauncher1.Descripcio = "Users";
             this.formLauncher1.DisplayPanel = this.panel3;
-            this.formLauncher1.Form = "SpeciesManagement";
+            this.formLauncher1.Form = "UserManagement";
             this.formLauncher1.Location = new System.Drawing.Point(0, 195);
             this.formLauncher1.Name = "formLauncher1";
             this.formLauncher1.PictureBoxImage = null;
