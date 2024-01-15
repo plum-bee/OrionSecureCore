@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{457730E8-3D8A-463A-908B-05007E73A748}</ProjectGuid>
+    <ProjectGuid>{2EC3977B-359C-48D8-A0A3-803F1117550E}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>SpeciesManagement</RootNamespace>
-    <AssemblyName>SpeciesManagement</AssemblyName>
+    <RootNamespace>UserManagement</RootNamespace>
+    <AssemblyName>UserManagement</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -49,11 +49,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SpeciesManagement.cs">
+    <Compile Include="UserManagement.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SpeciesManagement.Designer.cs">
-      <DependentUpon>SpeciesManagement.cs</DependentUpon>
+    <Compile Include="UserManagement.Designer.cs">
+      <DependentUpon>UserManagement.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -66,9 +66,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="SpeciesManagement.resx">
-      <DependentUpon>SpeciesManagement.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

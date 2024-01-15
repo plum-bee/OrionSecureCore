@@ -74,7 +74,7 @@ namespace SWUserControls
                         {
                             DisplayPanel.Controls.Clear(); 
                             form.TopLevel = false;
-                            form.FormBorderStyle = FormBorderStyle.None;
+                            form.FormBorderStyle = FormBorderStyle.FixedDialog;
                             form.Dock = DockStyle.Fill;
                             DisplayPanel.Controls.Add(form);
                             form.BringToFront();

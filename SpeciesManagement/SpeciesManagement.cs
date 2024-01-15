@@ -19,5 +19,14 @@ namespace SpeciesManagement
             SetTableName("SPECIES");
             SetQuery("SELECT * SPECIES");
         }
+
+        protected override void CustomizeDataGridView()
+        {
+            base.CustomizeDataGridView();
+
+            MyTable.Columns["idSpecie"].Visible = false;
+            MyTable.Columns["CodeSpecie"].HeaderText = "Codi";
+            MyTable.Columns["DescSpecie"].HeaderText = "Descripcio";
+        }
     }
 }
