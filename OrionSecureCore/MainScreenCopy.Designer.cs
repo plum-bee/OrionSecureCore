@@ -34,8 +34,8 @@ namespace OrionSecureCore
             this.btnMenu = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pnlMenu = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.formLauncher1 = new SWUserControls.FormLauncher();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.frmlSpecies = new SWUserControls.FormLauncher();
             this.panel1.SuspendLayout();
             this.pnlMenu.SuspendLayout();
@@ -74,14 +74,6 @@ namespace OrionSecureCore
             this.pnlMenu.Size = new System.Drawing.Size(295, 668);
             this.pnlMenu.TabIndex = 4;
             // 
-            // panel3
-            // 
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(295, 100);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1057, 668);
-            this.panel3.TabIndex = 5;
-            // 
             // formLauncher1
             // 
             this.formLauncher1.Classe = "SpeciesManagement";
@@ -93,6 +85,14 @@ namespace OrionSecureCore
             this.formLauncher1.PictureBoxImage = null;
             this.formLauncher1.Size = new System.Drawing.Size(456, 194);
             this.formLauncher1.TabIndex = 3;
+            // 
+            // panel3
+            // 
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(295, 100);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1057, 668);
+            this.panel3.TabIndex = 5;
             // 
             // frmlSpecies
             // 
