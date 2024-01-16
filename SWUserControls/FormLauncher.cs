@@ -102,5 +102,47 @@ namespace SWUserControls
             lblDesc.Text = Descripcio;
             ptrIcon.Image = PictureBoxImage;
         }
+
+        private void ptrIcon_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(Classe) && !string.IsNullOrWhiteSpace(Form))
+            {
+                try
+                {
+                    Assembly assembly = Assembly.LoadFrom(Classe + ".dll");
+
+                    Type formType = assembly.GetType(Classe + "." + Form);
+
+                    if (formType != null && formType.IsSubclassOf(typeof(Form)))
+                    {
+                        Form form = (Form)Activator.CreateInstance(formType);
+                        form.Text = Descripcio;
+
+                        if (DisplayPanel != null)
+                        {
+                            DisplayPanel.Controls.Clear();
+                            form.TopLevel = false;
+                            form.FormBorderStyle = FormBorderStyle.FixedToolWindow;
+                            form.Dock = DockStyle.Fill;
+                            DisplayPanel.Controls.Add(form);
+                            form.BringToFront();
+                            form.Show();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Formulario no encontrado.");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al abrir el formulario: " + ex.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Classe o Form no definidos.");
+            }
+        }
     }
 }

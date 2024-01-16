@@ -30,6 +30,7 @@ namespace OrionSecureCore
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainScreenCopy));
             this.tmr1 = new System.Windows.Forms.Timer(this.components);
             this.btnMenu = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -47,31 +48,40 @@ namespace OrionSecureCore
             // 
             // btnMenu
             // 
-            this.btnMenu.Location = new System.Drawing.Point(0, 0);
+            this.btnMenu.BackColor = System.Drawing.Color.BlueViolet;
+            this.btnMenu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnMenu.FlatAppearance.BorderSize = 0;
+            this.btnMenu.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnMenu.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMenu.Image = ((System.Drawing.Image)(resources.GetObject("btnMenu.Image")));
+            this.btnMenu.Location = new System.Drawing.Point(19, -1);
+            this.btnMenu.Margin = new System.Windows.Forms.Padding(0);
             this.btnMenu.Name = "btnMenu";
-            this.btnMenu.Size = new System.Drawing.Size(57, 38);
+            this.btnMenu.Size = new System.Drawing.Size(65, 50);
             this.btnMenu.TabIndex = 2;
-            this.btnMenu.Text = "btnMenu";
-            this.btnMenu.UseVisualStyleBackColor = true;
+            this.btnMenu.UseVisualStyleBackColor = false;
             this.btnMenu.Click += new System.EventHandler(this.btnMenu_Click);
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.BlueViolet;
             this.panel1.Controls.Add(this.btnMenu);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1352, 100);
+            this.panel1.Size = new System.Drawing.Size(1352, 52);
             this.panel1.TabIndex = 3;
             // 
             // pnlMenu
             // 
+            this.pnlMenu.BackColor = System.Drawing.Color.BlueViolet;
             this.pnlMenu.Controls.Add(this.formLauncher1);
             this.pnlMenu.Controls.Add(this.frmlSpecies);
             this.pnlMenu.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnlMenu.Location = new System.Drawing.Point(0, 100);
+            this.pnlMenu.Location = new System.Drawing.Point(0, 52);
             this.pnlMenu.Name = "pnlMenu";
-            this.pnlMenu.Size = new System.Drawing.Size(295, 668);
+            this.pnlMenu.Size = new System.Drawing.Size(283, 716);
             this.pnlMenu.TabIndex = 4;
             // 
             // formLauncher1
@@ -80,18 +90,18 @@ namespace OrionSecureCore
             this.formLauncher1.Descripcio = "Users";
             this.formLauncher1.DisplayPanel = this.panel3;
             this.formLauncher1.Form = "UserManagement";
-            this.formLauncher1.Location = new System.Drawing.Point(0, 195);
+            this.formLauncher1.Location = new System.Drawing.Point(0, 174);
             this.formLauncher1.Name = "formLauncher1";
-            this.formLauncher1.PictureBoxImage = null;
+            this.formLauncher1.PictureBoxImage = ((System.Drawing.Image)(resources.GetObject("formLauncher1.PictureBoxImage")));
             this.formLauncher1.Size = new System.Drawing.Size(456, 194);
             this.formLauncher1.TabIndex = 3;
             // 
             // panel3
             // 
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(295, 100);
+            this.panel3.Location = new System.Drawing.Point(283, 52);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1057, 668);
+            this.panel3.Size = new System.Drawing.Size(1069, 716);
             this.panel3.TabIndex = 5;
             // 
             // frmlSpecies
@@ -100,9 +110,9 @@ namespace OrionSecureCore
             this.frmlSpecies.Descripcio = "Species";
             this.frmlSpecies.DisplayPanel = this.panel3;
             this.frmlSpecies.Form = "SpeciesManagement";
-            this.frmlSpecies.Location = new System.Drawing.Point(0, 21);
+            this.frmlSpecies.Location = new System.Drawing.Point(0, 0);
             this.frmlSpecies.Name = "frmlSpecies";
-            this.frmlSpecies.PictureBoxImage = null;
+            this.frmlSpecies.PictureBoxImage = ((System.Drawing.Image)(resources.GetObject("frmlSpecies.PictureBoxImage")));
             this.frmlSpecies.Size = new System.Drawing.Size(456, 194);
             this.frmlSpecies.TabIndex = 2;
             // 
@@ -117,6 +127,7 @@ namespace OrionSecureCore
             this.Controls.Add(this.panel1);
             this.Location = new System.Drawing.Point(0, 50);
             this.Name = "MainScreenCopy";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.panel1.ResumeLayout(false);
             this.pnlMenu.ResumeLayout(false);
             this.ResumeLayout(false);
