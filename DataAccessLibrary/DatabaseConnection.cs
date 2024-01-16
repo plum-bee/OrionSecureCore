@@ -86,6 +86,15 @@ namespace DataAccessLibrary
             return _dataSet;
         }
 
+        public DataSet RetrieveDataUsingQuery(SqlCommand command)
+        {
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            DataSet dataSet = new DataSet();
+            adapter.Fill(dataSet);
+
+            return dataSet;
+        }
+
         public void UpdateData(string sqlQuery, DataSet dataSetToUpdate)
         {
             OpenSqlConnection();

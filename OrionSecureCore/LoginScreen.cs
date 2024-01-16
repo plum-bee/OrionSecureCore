@@ -30,9 +30,13 @@ namespace OrionSecureCore
             login = txtUserLogin.Text;
             string password = txtPasswordLogin.Text;
 
-            string query = $"SELECT * FROM Users WHERE Login = '{login}'";
+            Dictionary<string, string> fieldValues = new Dictionary<string, string>
+                {
+                   {"Login", login}
+                };
 
-            DataSet usersDataset = connectionComponent.RetrieveDataUsingQuery(query);
+            SqlCommand command = connectionComponent.GenerateQuery("Users", fieldValues);
+            DataSet usersDataset = connectionComponent.RetrieveDataUsingQuery(command);
 
             DataTable usersTable = usersDataset.Tables[0];
 
@@ -49,7 +53,6 @@ namespace OrionSecureCore
                 }
                 else if (IsPasswordValid(password, storedHash))
                 {
-
                     MainScreenCopy mainScreen = new MainScreenCopy();
 
                     this.Hide();

@@ -18,7 +18,7 @@ namespace DataAccess
 
     public partial class BaseForm : Form
     {
-        private readonly DBConnection dbConnection;
+        protected readonly DBConnection dbConnection;
         private DataSet _dataSet;
         private bool _isNew;
         private string _tableToLoad;

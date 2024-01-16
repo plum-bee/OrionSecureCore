@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DataAccessLibrary;
 using DataAccess;
 
 namespace UserManagement
@@ -18,6 +19,8 @@ namespace UserManagement
             InitializeComponent();
             SetTableName("USERS");
             SetQuery("SELECT * FROM USERS");
+
+            FetchForeignData();
         }
 
         protected override void CustomizeDataGridView()
@@ -27,6 +30,14 @@ namespace UserManagement
            // MyTable.Columns["idSpecie"].Visible = false;
            // MyTable.Columns["CodeSpecie"].HeaderText = "Codi";
            // MyTable.Columns["DescSpecie"].HeaderText = "Descripcio";
+        }
+
+        private void FetchForeignData()
+        {
+            cmbSpecies.DataSource = dbConnection.RetrieveAllDataFromTable("Species").Tables[0];
+            cmbSpecies.DisplayMember = "DescSpecie";
+            cmbSpecies.ValueMember = "idSpecie";
+                       
         }
     }
 }
