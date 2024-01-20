@@ -19,7 +19,7 @@ namespace DataAccess
     public partial class BaseForm : Form
     {
         protected readonly DBConnection dbConnection;
-        private DataSet _dataSet;
+        protected DataSet _dataSet;
         private bool _isNew;
         private string _tableToLoad;
         private string _query;
@@ -40,23 +40,26 @@ namespace DataAccess
             _query = query;
         }
 
-        private void FetchData()
+        protected virtual void FetchData()
         {
             _dataSet = new DataSet();
             _dataSet = dbConnection.RetrieveAllDataFromTable(_tableToLoad);
             dgvTable.DataSource = _dataSet.Tables[0];
 
-            BindTextBoxesToData();
+            BindDataToFields();
             CustomizeDataGridView();
         }
 
-        private void BindTextBoxesToData()
+        protected virtual void BindDataToFields()
         {
             foreach (TextBox textBox in this.Controls.OfType<TextBox>())
             {
-                textBox.DataBindings.Clear();
-                textBox.DataBindings.Add("Text", _dataSet.Tables[0], textBox.Tag.ToString());
-                textBox.Validated += OnTextBoxValidate;
+                if (textBox.Tag != null)
+                {
+                    textBox.DataBindings.Clear();
+                    textBox.DataBindings.Add("Text", _dataSet.Tables[0], textBox.Tag.ToString());
+                    textBox.Validated += OnTextBoxValidate;
+                }
             }
         }
 
@@ -69,7 +72,7 @@ namespace DataAccess
         {
             if (_isNew)
             {
-                InsertNewRowFromTextBoxes();
+                InsertRowFromFields();
             }
 
 
@@ -79,7 +82,7 @@ namespace DataAccess
             _isNew = false;
         }
 
-        private void InsertNewRowFromTextBoxes()
+        private void InsertRowFromFields()
         {
             DataRow dataRow = _dataSet.Tables[0].NewRow();
 
@@ -91,7 +94,7 @@ namespace DataAccess
             _dataSet.Tables[0].Rows.Add(dataRow);
         }
 
-        private void ClearTextBoxes()
+        private void ClearFields()
         {
             foreach (Control control in this.Controls)
             {
@@ -117,7 +120,7 @@ namespace DataAccess
         private void btnAdd_Click(object sender, EventArgs e)
         {
             _isNew = true;
-            ClearTextBoxes();
+            ClearFields();
         }
 
         private void btnImportData_Click(object sender, EventArgs e)

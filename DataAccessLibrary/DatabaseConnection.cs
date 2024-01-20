@@ -37,6 +37,8 @@ namespace DataAccessLibrary
             }
         }
 
+
+        //TODO: Arreglar el SQL Injection
         public DataSet RetrieveAllDataFromTable(string tableName)
         {
             OpenSqlConnection();
@@ -106,7 +108,6 @@ namespace DataAccessLibrary
             }
 
             CloseSqlConnection();
-
         }
 
         public void ExecuteSqlNonQuery(string sqlQuery)

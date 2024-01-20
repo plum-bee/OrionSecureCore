@@ -18,6 +18,7 @@ namespace SpeciesManagement
             InitializeComponent();
             SetTableName("SPECIES");
             SetQuery("SELECT * FROM SPECIES");
+            
         }
 
         protected override void CustomizeDataGridView()
