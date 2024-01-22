@@ -21,7 +21,7 @@ namespace DataAccess
         protected readonly DBConnection dbConnection;
         protected DataSet _dataSet;
         private bool _isNew;
-        private string _tableToLoad;
+        protected string _tableToLoad;
         private string _query;
 
         public BaseForm()
@@ -35,7 +35,7 @@ namespace DataAccess
             _tableToLoad = tableName;
         }
 
-        public void SetQuery(string query)
+        protected void SetQuery(string query)
         {
             _query = query;
         }
@@ -63,7 +63,7 @@ namespace DataAccess
             }
         }
 
-        private void OnTextBoxValidate(object sender, EventArgs e)
+        protected void OnTextBoxValidate(object sender, EventArgs e)
         {
             ((TextBox)sender).DataBindings[0].BindingManagerBase.EndCurrentEdit();
         }
