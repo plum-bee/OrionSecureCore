@@ -68,7 +68,7 @@ namespace DataAccess
             ((TextBox)sender).DataBindings[0].BindingManagerBase.EndCurrentEdit();
         }
 
-        private void UpdateTable()
+        protected virtual void UpdateTable()
         {
             if (_isNew)
             {

@@ -30,6 +30,7 @@ namespace UserManagement
         private void InitializeComponent()
         {
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.cbSpecies = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // textBox1
@@ -40,15 +41,26 @@ namespace UserManagement
             this.textBox1.TabIndex = 11;
             this.textBox1.Tag = "CodeUser";
             // 
+            // cbSpecies
+            // 
+            this.cbSpecies.FormattingEnabled = true;
+            this.cbSpecies.Location = new System.Drawing.Point(561, 88);
+            this.cbSpecies.Name = "cbSpecies";
+            this.cbSpecies.Size = new System.Drawing.Size(121, 24);
+            this.cbSpecies.TabIndex = 12;
+            this.cbSpecies.Tag = "DescSpecie";
+            // 
             // UserManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1039, 680);
+            this.Controls.Add(this.cbSpecies);
             this.Controls.Add(this.textBox1);
             this.Name = "UserManagement";
             this.Text = "User Management";
             this.Controls.SetChildIndex(this.textBox1, 0);
+            this.Controls.SetChildIndex(this.cbSpecies, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -57,5 +69,6 @@ namespace UserManagement
         #endregion
 
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ComboBox cbSpecies;
     }
 }

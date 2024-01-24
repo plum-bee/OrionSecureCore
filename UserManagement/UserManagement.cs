@@ -19,6 +19,14 @@ namespace UserManagement
             InitializeComponent();
             SetTableName("USERS");
             SetQuery("SELECT * FROM USERS");
+
+            AddForeignKeyMapping("PLANETS", "idPlanet", "DescPlanet");
+            AddForeignKeyMapping("SPECIES", "idSpecie", "DescSpecie");
+            AddForeignKeyMapping("USERCATEGORIES", "idUserCategory", "DescCategory");
+            AddForeignKeyMapping("USERRANKs", "idUserRank", "DescRank");
+
+            cbSpecies.Tag = "idSpecie";
+
         }
 
         protected override void CustomizeDataGridView()
