@@ -55,6 +55,16 @@ namespace SWUserControls
             InitializeComponent();
         }
 
+        private void pnlColor_Paint(object sender, PaintEventArgs e)
+        {
+            Color col = Color.White;
+            ButtonBorderStyle bbs = ButtonBorderStyle.Solid;
+            int grosor = 1; 
+
+            ControlPaint.DrawBorder(e.Graphics, pnlLauncher.ClientRectangle, col, grosor, bbs, col, grosor, bbs, col, grosor, bbs, col, grosor, bbs);
+        }
+
+
         private void btnLauncher_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(Classe) && !string.IsNullOrWhiteSpace(Form))

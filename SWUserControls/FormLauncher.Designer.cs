@@ -38,22 +38,22 @@ namespace SWUserControls
             // 
             // pnlLauncher
             // 
-            this.pnlLauncher.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlLauncher.BackColor = System.Drawing.Color.MediumPurple;
+            this.pnlLauncher.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(45)))), ((int)(((byte)(145)))));
             this.pnlLauncher.Controls.Add(this.lblDesc);
             this.pnlLauncher.Controls.Add(this.ptrIcon);
+            this.pnlLauncher.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlLauncher.Location = new System.Drawing.Point(0, 0);
             this.pnlLauncher.Name = "pnlLauncher";
-            this.pnlLauncher.Size = new System.Drawing.Size(255, 157);
+            this.pnlLauncher.Size = new System.Drawing.Size(426, 180);
             this.pnlLauncher.TabIndex = 0;
             this.pnlLauncher.Click += new System.EventHandler(this.btnLauncher_Click);
+            this.pnlLauncher.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlColor_Paint);
             // 
             // lblDesc
             // 
             this.lblDesc.AutoSize = true;
             this.lblDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDesc.ForeColor = System.Drawing.Color.White;
             this.lblDesc.Location = new System.Drawing.Point(111, 66);
             this.lblDesc.Name = "lblDesc";
             this.lblDesc.Size = new System.Drawing.Size(92, 29);

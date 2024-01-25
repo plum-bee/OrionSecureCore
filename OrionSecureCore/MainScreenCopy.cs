@@ -20,7 +20,7 @@ namespace OrionSecureCore
             InitializeComponent();
 
             pnlMenu.Width = 75;
-            tmr1.Interval = 30; // Cambia esto para ajustar la velocidad de la animación
+            tmr1.Interval = 30;
             tmr1.Tick += tmr1_Tick;
             
         }
@@ -29,7 +29,6 @@ namespace OrionSecureCore
         {
             if (pnlOpen)
             {
-                
                 pnlMenu.Width -= 10;
                 if (pnlMenu.Width <= 75)
                 {
@@ -39,15 +38,15 @@ namespace OrionSecureCore
             }
             else
             {
-                
                 pnlMenu.Width += 10;
-                if (pnlMenu.Width >= 200)
+                if (pnlMenu.Width >= 250)
                 {
                     tmr1.Stop();
                     pnlOpen = true;
                 }
             }
         }
+
 
         private void btnMenu_Click(object sender, EventArgs e)
         {
