@@ -34,11 +34,11 @@ namespace UserManagement
             MyTable.Columns["Login"].Visible = false;
             MyTable.Columns["CodeUser"].HeaderText = "Code";
             MyTable.Columns["UserName"].HeaderText = "Username";
-            MyTable.Columns["idUserRank"].HeaderText = "Rank";
-            MyTable.Columns["idUserCategory"].HeaderText = "Category";
+            MyTable.Columns["idUserRank"].Visible = false;
+            MyTable.Columns["idUserCategory"].Visible = false;
             MyTable.Columns["Photo"].Visible = false;
-            MyTable.Columns["idPlanet"].HeaderText = "Planet";
-            MyTable.Columns["idSpecie"].HeaderText = "Specie";
+            MyTable.Columns["idPlanet"].Visible = false;
+            MyTable.Columns["idSpecie"].Visible = false;
             MyTable.Columns["Salt"].Visible = false;
             MyTable.Columns["Password"].Visible = false;
         }

@@ -22,7 +22,7 @@ namespace DataAccess
 
     public partial class BaseFormFk : BaseForm
     {
-        private readonly Dictionary<string, ForeignKeyInfo> _foreignKeys = new Dictionary<string, ForeignKeyInfo>();
+        protected readonly Dictionary<string, ForeignKeyInfo> _foreignKeys = new Dictionary<string, ForeignKeyInfo>();
 
         public void AddForeignKeyMapping(string tableName, string foreignKeyColumn, string displayColumn)
         {
@@ -42,7 +42,9 @@ namespace DataAccess
         {
             base.FetchData();
             BindAllForeignKeyComboBoxes();
+            FillDisplayColumns();
         }
+
 
         private void BindAllForeignKeyComboBoxes()
         {
@@ -67,19 +69,19 @@ namespace DataAccess
                         dataRow[textBox.Tag.ToString()] = textBox.Text;
                         break;
                     case ComboBox comboBox when comboBox.Tag != null:
-                    {
-                        var selectedValue = comboBox.SelectedValue;
-                        if (selectedValue != null)
                         {
-                            dataRow[comboBox.Tag.ToString()] = selectedValue;
-                        }
-                        else
-                        {
-                            dataRow[comboBox.Tag.ToString()] = "Unknown";
-                        }
+                            var selectedValue = comboBox.SelectedValue;
+                            if (selectedValue != null)
+                            {
+                                dataRow[comboBox.Tag.ToString()] = selectedValue;
+                            }
+                            else
+                            {
+                                dataRow[comboBox.Tag.ToString()] = "Unknown";
+                            }
 
-                        break;
-                    }
+                            break;
+                        }
                 }
             }
 
@@ -102,6 +104,69 @@ namespace DataAccess
                 comboBox.DataBindings["SelectedValue"]?.BindingManagerBase.EndCurrentEdit();
             };
         }
+
+        protected override void CustomizeDataGridView()
+        {
+            base.CustomizeDataGridView();
+
+            foreach (var fkMapping in _foreignKeys)
+            {
+                string columnName = fkMapping.Value.DisplayColumn;
+                if (!MyTable.Columns.Contains(columnName))
+                {
+                    AddVirtualColumn(fkMapping.Value);
+                }
+            }
+        }
+
+        private void AddVirtualColumn(ForeignKeyInfo fkInfo)
+        {
+            DataGridViewTextBoxColumn virtualColumn = new DataGridViewTextBoxColumn
+            {
+                Name = fkInfo.DisplayColumn,
+                HeaderText = fkInfo.DisplayColumn,
+                ReadOnly = true
+            };
+
+            MyTable.Columns.Add(virtualColumn);
+        }
+
+
+
+        private void FillDisplayColumns()
+        {
+            foreach (DataGridViewRow row in MyTable.Rows)
+            {
+                if (row.IsNewRow) continue;
+
+                foreach (var fkMapping in _foreignKeys)
+                {
+                    var fkValue = row.Cells[fkMapping.Key].Value;
+
+                    if (fkValue == DBNull.Value)
+                    {
+                        row.Cells[fkMapping.Value.DisplayColumn].Value = string.Empty;
+                        continue;
+                    }
+
+                    if (fkValue != null)
+                    {
+                        var displayData = fkMapping.Value.ForeignKeyData
+                            .AsEnumerable()
+                            .FirstOrDefault(dr => dr.Field<int>(fkMapping.Key) == Convert.ToInt32(fkValue))?[fkMapping.Value.DisplayColumn]?.ToString();
+
+                        row.Cells[fkMapping.Value.DisplayColumn].Value = displayData;
+                    }
+                    else
+                    {
+                        row.Cells[fkMapping.Value.DisplayColumn].Value = "Unknown";
+                    }
+                }
+            }
+        }
+
+
+
 
     }
 }

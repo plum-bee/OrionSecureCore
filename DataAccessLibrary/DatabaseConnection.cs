@@ -14,6 +14,7 @@ namespace DataAccessLibrary
         private readonly string _connectionString;
         private readonly SqlConnection _sqlConnection;
         private DataSet _dataSet;
+
         public DatabaseConnection()
         {
             _connectionString = "Data Source=sqlserver.S2AM.sdslab.cat;Initial Catalog=SecureCoreG6;User Id=G6;Password=12345aAG62324.;";
@@ -44,9 +45,9 @@ namespace DataAccessLibrary
             OpenSqlConnection();
 
             _dataSet = new DataSet();
-            string selectQuery = $"SELECT * FROM {tableName}";
+            var selectQuery = $"SELECT * FROM {tableName}";
 
-            using (SqlDataAdapter adapter = new SqlDataAdapter(selectQuery, _sqlConnection))
+            using (var adapter = new SqlDataAdapter(selectQuery, _sqlConnection))
             {
                 adapter.Fill(_dataSet);
             }

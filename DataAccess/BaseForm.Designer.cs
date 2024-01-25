@@ -31,9 +31,9 @@ namespace DataAccess
         {
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
-            this.dgvTable = new System.Windows.Forms.DataGridView();
+            this.MyTable = new System.Windows.Forms.DataGridView();
             this.btnImportData = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvTable)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MyTable)).BeginInit();
             this.SuspendLayout();
             // 
             // btnAdd
@@ -60,15 +60,15 @@ namespace DataAccess
             // 
             // dgvTable
             // 
-            this.dgvTable.AllowDrop = true;
-            this.dgvTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTable.Location = new System.Drawing.Point(11, 308);
-            this.dgvTable.Name = "dgvTable";
-            this.dgvTable.ReadOnly = true;
-            this.dgvTable.RowHeadersWidth = 51;
-            this.dgvTable.RowTemplate.Height = 24;
-            this.dgvTable.Size = new System.Drawing.Size(1019, 363);
-            this.dgvTable.TabIndex = 6;
+            this.MyTable.AllowDrop = true;
+            this.MyTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.MyTable.Location = new System.Drawing.Point(11, 308);
+            this.MyTable.Name = "MyTable";
+            this.MyTable.ReadOnly = true;
+            this.MyTable.RowHeadersWidth = 51;
+            this.MyTable.RowTemplate.Height = 24;
+            this.MyTable.Size = new System.Drawing.Size(1019, 363);
+            this.MyTable.TabIndex = 6;
             // 
             // btnImportData
             // 
@@ -89,10 +89,10 @@ namespace DataAccess
             this.Controls.Add(this.btnImportData);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.dgvTable);
+            this.Controls.Add(this.MyTable);
             this.Name = "frmTableLoader";
             this.Text = "TableLoader";
-            ((System.ComponentModel.ISupportInitialize)(this.dgvTable)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MyTable)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -100,7 +100,6 @@ namespace DataAccess
         #endregion
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnUpdate;
-        private System.Windows.Forms.DataGridView dgvTable;
         private System.Windows.Forms.Button btnImportData;
     }
 }

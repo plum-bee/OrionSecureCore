@@ -44,7 +44,7 @@ namespace DataAccess
         {
             DataSet = new DataSet();
             DataSet = DbConnection.RetrieveAllDataFromTable(TableToLoad);
-            dgvTable.DataSource = DataSet.Tables[0];
+            MyTable.DataSource = DataSet.Tables[0];
 
             BindDataToFields();
             CustomizeDataGridView();
@@ -52,14 +52,12 @@ namespace DataAccess
 
         protected virtual void BindDataToFields()
         {
-            foreach (TextBox textBox in this.Controls.OfType<TextBox>())
+            foreach (var textBox in this.Controls.OfType<TextBox>())
             {
-                if (textBox.Tag != null)
-                {
-                    textBox.DataBindings.Clear();
-                    textBox.DataBindings.Add("Text", DataSet.Tables[0], textBox.Tag.ToString());
-                    textBox.Validated += OnTextBoxValidate;
-                }
+                if (textBox.Tag == null) continue;
+                textBox.DataBindings.Clear();
+                textBox.DataBindings.Add("Text", DataSet.Tables[0], textBox.Tag.ToString());
+                textBox.Validated += OnTextBoxValidate;
             }
         }
 
@@ -84,9 +82,9 @@ namespace DataAccess
 
         protected virtual void InsertRowFromFields()
         {
-            DataRow dataRow = DataSet.Tables[0].NewRow();
+            var dataRow = DataSet.Tables[0].NewRow();
 
-            foreach (TextBox textBox in this.Controls.OfType<TextBox>())
+            foreach (var textBox in this.Controls.OfType<TextBox>())
             {
                 dataRow[textBox.Tag.ToString()] = textBox.Text;
             }
@@ -98,12 +96,10 @@ namespace DataAccess
         {
             foreach (Control control in this.Controls)
             {
-                if (control is TextBox textBox)
-                {
-                    textBox.DataBindings.Clear();
-                    textBox.Clear();
-                    textBox.Validated -= OnTextBoxValidate;
-                }
+                if (!(control is TextBox textBox)) continue;
+                textBox.DataBindings.Clear();
+                textBox.Clear();
+                textBox.Validated -= OnTextBoxValidate;
             }
         }
 
@@ -112,10 +108,7 @@ namespace DataAccess
 
         }
 
-        protected DataGridView MyTable
-        {
-            get { return dgvTable; }
-        }
+        protected DataGridView MyTable { get; private set; }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
