@@ -29,38 +29,85 @@ namespace UserManagement
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.cbSpecies = new System.Windows.Forms.ComboBox();
+            this.txtCodeUser = new System.Windows.Forms.TextBox();
+            this.cmbSpecies = new System.Windows.Forms.ComboBox();
+            this.txtUsername = new System.Windows.Forms.TextBox();
+            this.cmbRank = new System.Windows.Forms.ComboBox();
+            this.cmbPlanet = new System.Windows.Forms.ComboBox();
+            this.cmbCategory = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
-            // textBox1
+            // txtCodeUser
             // 
-            this.textBox1.Location = new System.Drawing.Point(41, 74);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(228, 22);
-            this.textBox1.TabIndex = 11;
-            this.textBox1.Tag = "CodeUser";
+            this.txtCodeUser.Location = new System.Drawing.Point(12, 12);
+            this.txtCodeUser.Name = "txtCodeUser";
+            this.txtCodeUser.Size = new System.Drawing.Size(228, 22);
+            this.txtCodeUser.TabIndex = 11;
+            this.txtCodeUser.Tag = "CodeUser";
             // 
-            // cbSpecies
+            // cmbSpecies
             // 
-            this.cbSpecies.FormattingEnabled = true;
-            this.cbSpecies.Location = new System.Drawing.Point(561, 88);
-            this.cbSpecies.Name = "cbSpecies";
-            this.cbSpecies.Size = new System.Drawing.Size(121, 24);
-            this.cbSpecies.TabIndex = 12;
-            this.cbSpecies.Tag = "DescSpecie";
+            this.cmbSpecies.FormattingEnabled = true;
+            this.cmbSpecies.Location = new System.Drawing.Point(501, 12);
+            this.cmbSpecies.Name = "cmbSpecies";
+            this.cmbSpecies.Size = new System.Drawing.Size(121, 24);
+            this.cmbSpecies.TabIndex = 12;
+            this.cmbSpecies.Tag = "idSpecie";
+            // 
+            // txtUsername
+            // 
+            this.txtUsername.Location = new System.Drawing.Point(12, 55);
+            this.txtUsername.Name = "txtUsername";
+            this.txtUsername.Size = new System.Drawing.Size(228, 22);
+            this.txtUsername.TabIndex = 13;
+            this.txtUsername.Tag = "UserName";
+            // 
+            // cmbRank
+            // 
+            this.cmbRank.FormattingEnabled = true;
+            this.cmbRank.Location = new System.Drawing.Point(501, 53);
+            this.cmbRank.Name = "cmbRank";
+            this.cmbRank.Size = new System.Drawing.Size(121, 24);
+            this.cmbRank.TabIndex = 14;
+            this.cmbRank.Tag = "idUserRank";
+            // 
+            // cmbPlanet
+            // 
+            this.cmbPlanet.FormattingEnabled = true;
+            this.cmbPlanet.Location = new System.Drawing.Point(501, 98);
+            this.cmbPlanet.Name = "cmbPlanet";
+            this.cmbPlanet.Size = new System.Drawing.Size(121, 24);
+            this.cmbPlanet.TabIndex = 15;
+            this.cmbPlanet.Tag = "idPlanet";
+            // 
+            // cmbCategory
+            // 
+            this.cmbCategory.FormattingEnabled = true;
+            this.cmbCategory.Location = new System.Drawing.Point(501, 149);
+            this.cmbCategory.Name = "cmbCategory";
+            this.cmbCategory.Size = new System.Drawing.Size(121, 24);
+            this.cmbCategory.TabIndex = 16;
+            this.cmbCategory.Tag = "idUserCategory";
             // 
             // UserManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1039, 680);
-            this.Controls.Add(this.cbSpecies);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.cmbCategory);
+            this.Controls.Add(this.cmbPlanet);
+            this.Controls.Add(this.cmbRank);
+            this.Controls.Add(this.txtUsername);
+            this.Controls.Add(this.cmbSpecies);
+            this.Controls.Add(this.txtCodeUser);
             this.Name = "UserManagement";
             this.Text = "User Management";
-            this.Controls.SetChildIndex(this.textBox1, 0);
-            this.Controls.SetChildIndex(this.cbSpecies, 0);
+            this.Controls.SetChildIndex(this.txtCodeUser, 0);
+            this.Controls.SetChildIndex(this.cmbSpecies, 0);
+            this.Controls.SetChildIndex(this.txtUsername, 0);
+            this.Controls.SetChildIndex(this.cmbRank, 0);
+            this.Controls.SetChildIndex(this.cmbPlanet, 0);
+            this.Controls.SetChildIndex(this.cmbCategory, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -68,7 +115,11 @@ namespace UserManagement
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ComboBox cbSpecies;
+        private System.Windows.Forms.TextBox txtCodeUser;
+        private System.Windows.Forms.ComboBox cmbSpecies;
+        private System.Windows.Forms.TextBox txtUsername;
+        private System.Windows.Forms.ComboBox cmbRank;
+        private System.Windows.Forms.ComboBox cmbPlanet;
+        private System.Windows.Forms.ComboBox cmbCategory;
     }
 }

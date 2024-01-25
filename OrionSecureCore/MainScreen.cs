@@ -12,7 +12,7 @@ namespace OrionSecureCore
 {
     public partial class MainScreen : Form
     {
-        private bool pnlOpen = false;
+        private bool _pnlOpen = false;
 
         public MainScreen()
         {
@@ -33,14 +33,14 @@ namespace OrionSecureCore
 
         private void tmr1_Tick(object sender, EventArgs e)
         {
-            if (pnlOpen)
+            if (_pnlOpen)
             {
                 
                 pnlMenu.Width -= 10;
                 if (pnlMenu.Width <= 0)
                 {
                     tmr1.Stop();
-                    pnlOpen = false;
+                    _pnlOpen = false;
                 }
             }
             else
@@ -50,7 +50,7 @@ namespace OrionSecureCore
                 if (pnlMenu.Width >= 200)
                 {
                     tmr1.Stop();
-                    pnlOpen = true;
+                    _pnlOpen = true;
                 }
             }
         }

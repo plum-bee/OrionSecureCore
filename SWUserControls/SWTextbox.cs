@@ -8,25 +8,25 @@ using System.Text.RegularExpressions;
 
 namespace SWUserControls
 {
-    public class SWTextbox : TextBox
+    public class SwTextbox : TextBox
     {
-        public enum SWTextType
+        public enum SwTextType
         {
             Number,
             Text,
             Code
         }
 
-        public SWTextType TextType { get; set; }
+        public SwTextType TextType { get; set; }
         public bool AllowEmpty { get; set; }
         public bool IsForeignKey { get; set; }
         public string ControlName { get; set; }
         public System.Drawing.Color FocusColor { get; set; } = System.Drawing.Color.Yellow;
         public System.Drawing.Color DefaultColor { get; set; } = System.Drawing.SystemColors.Window;
 
-        private static readonly Regex regexCode = new Regex(@"^[AEIOU][A-Z]{3}[0-9]{2}[13579]$");
+        private static readonly Regex RegexCode = new Regex(@"^[AEIOU][A-Z]{3}[0-9]{2}[13579]$");
 
-        public SWTextbox()
+        public SwTextbox()
         {
             this.Enter += SWTextbox_Enter;
             this.Leave += SWTextbox_Leave;
@@ -53,22 +53,22 @@ namespace SWUserControls
 
             switch (TextType)
             {
-                case SWTextType.Text:
+                case SwTextType.Text:
                     if (!Regex.IsMatch(this.Text, "^[A-Za-z]+$"))
                     {
                         ShowError("Invalid input for text. Please enter letters only.");
                         e.Cancel = true;
                     }
                     break;
-                case SWTextType.Number:
+                case SwTextType.Number:
                     if (!Regex.IsMatch(this.Text, "^[0-9]+$"))
                     {
                         ShowError("Invalid input for number. Please enter digits only.");
                         e.Cancel = true;
                     }
                     break;
-                case SWTextType.Code:
-                    if (!regexCode.IsMatch(this.Text))
+                case SwTextType.Code:
+                    if (!RegexCode.IsMatch(this.Text))
                     {
                         ShowError("Invalid input for code. Please enter a valid code.");
                         e.Cancel = true;

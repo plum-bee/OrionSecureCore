@@ -16,27 +16,27 @@ namespace OrionSecureCore
         public LoginScreen()
         {
             InitializeComponent();
-            connectionComponent = new SWDatabaseConnection();
-            hashUser = new HashUser();
+            _connectionComponent = new SwDatabaseConnection();
+            _hashUser = new HashUser();
         }
 
-        private const string DEFAULT_PASS = "12345aA";
-        private SWDatabaseConnection connectionComponent;
-        private HashUser hashUser;
-        private string login;
+        private const string DefaultPass = "12345aA";
+        private SwDatabaseConnection _connectionComponent;
+        private HashUser _hashUser;
+        private string _login;
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            login = txtUserLogin.Text;
+            _login = txtUserLogin.Text;
             string password = txtPasswordLogin.Text;
 
             Dictionary<string, string> fieldValues = new Dictionary<string, string>
                 {
-                   {"Login", login}
+                   {"Login", _login}
                 };
 
-            SqlCommand command = connectionComponent.GenerateQuery("Users", fieldValues);
-            DataSet usersDataset = connectionComponent.RetrieveDataUsingQuery(command);
+            SqlCommand command = _connectionComponent.GenerateQuery("Users", fieldValues);
+            DataSet usersDataset = _connectionComponent.RetrieveDataUsingQuery(command);
 
             DataTable usersTable = usersDataset.Tables[0];
 
@@ -48,7 +48,7 @@ namespace OrionSecureCore
                 if (IsDefaultPassword(password, storedHash))
                 {
                     RestorePassword restorePasswordForm = new RestorePassword();
-                    restorePasswordForm.Login = login;
+                    restorePasswordForm.Login = _login;
                     restorePasswordForm.ShowDialog();
                 }
                 else if (IsPasswordValid(password, storedHash))
@@ -72,13 +72,13 @@ namespace OrionSecureCore
 
         private bool IsDefaultPassword(string password, string storedHash)
         {
-            return storedHash == DEFAULT_PASS && password == DEFAULT_PASS;
+            return storedHash == DefaultPass && password == DefaultPass;
         }
 
         private bool IsPasswordValid(string password, string storedHash)
         {
-            string salt = GetSaltFromDatabase(login);
-            password = hashUser.ValidatePassword(password, salt);
+            string salt = GetSaltFromDatabase(_login);
+            password = _hashUser.ValidatePassword(password, salt);
             return password == storedHash;
         }
 
@@ -86,7 +86,7 @@ namespace OrionSecureCore
         {
             string query = $"SELECT Salt FROM Users WHERE Login = '{login}'";
 
-            DataSet saltDataset = connectionComponent.RetrieveDataUsingQuery(query);
+            DataSet saltDataset = _connectionComponent.RetrieveDataUsingQuery(query);
 
             DataTable saltTable = saltDataset.Tables[0];
 

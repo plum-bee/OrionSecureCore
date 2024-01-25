@@ -14,15 +14,15 @@ namespace SWUserControls
     public partial class FormLauncher : UserControl
     {
 
-        private string classe;
-        private string form;
-        private string descripcio = "Default";
-        private Panel displayPanel;
+        private string _classe;
+        private string _form;
+        private string _descripcio = "Default";
+        private Panel _displayPanel;
 
         public Panel DisplayPanel
         {
-            get { return displayPanel; }
-            set { displayPanel = value; }
+            get { return _displayPanel; }
+            set { _displayPanel = value; }
         }
         public Image PictureBoxImage
         {
@@ -34,20 +34,20 @@ namespace SWUserControls
         }
         public string Classe
         {
-            get { return classe; }
-            set { classe = value; }
+            get { return _classe; }
+            set { _classe = value; }
         }
 
         public string Form
         {
-            get { return form; }
-            set { form = value; }
+            get { return _form; }
+            set { _form = value; }
         }
 
         public string Descripcio
         {
-            get { return descripcio; }
-            set { descripcio = value; }
+            get { return _descripcio; }
+            set { _descripcio = value; }
         }
 
         public FormLauncher()

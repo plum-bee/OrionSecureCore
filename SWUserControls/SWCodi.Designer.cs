@@ -1,7 +1,7 @@
 ﻿
 namespace SWUserControls
 {
-    partial class SWCodi
+    partial class SwCodi
     {
         /// <summary> 
         /// Required designer variable.
@@ -54,7 +54,7 @@ namespace SWUserControls
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.txtCode);
             this.Controls.Add(this.txtDescription);
-            this.Name = "SWCodi";
+            this.Name = "SwCodi";
             this.Size = new System.Drawing.Size(573, 111);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -12,7 +12,7 @@ using DataAccess;
 
 namespace UserManagement
 {
-    public partial class UserManagement : BaseFormFK
+    public partial class UserManagement : BaseFormFk
     {
         public UserManagement()
         {
@@ -24,9 +24,6 @@ namespace UserManagement
             AddForeignKeyMapping("SPECIES", "idSpecie", "DescSpecie");
             AddForeignKeyMapping("USERCATEGORIES", "idUserCategory", "DescCategory");
             AddForeignKeyMapping("USERRANKs", "idUserRank", "DescRank");
-
-            cbSpecies.Tag = "idSpecie";
-
         }
 
         protected override void CustomizeDataGridView()
@@ -34,6 +31,7 @@ namespace UserManagement
             base.CustomizeDataGridView();
 
             MyTable.Columns["idUser"].Visible = false;
+            MyTable.Columns["Login"].Visible = false;
             MyTable.Columns["CodeUser"].HeaderText = "Code";
             MyTable.Columns["UserName"].HeaderText = "Username";
             MyTable.Columns["idUserRank"].HeaderText = "Rank";

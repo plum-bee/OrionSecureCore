@@ -11,28 +11,28 @@ using DataAccessLibrary;
 
 namespace DataAccess
 {
-    public class DBConnection : DatabaseConnection
+    public class DbConnection : DatabaseConnection
     {
 
     }
 
     public partial class BaseForm : Form
     {
-        protected readonly DBConnection dbConnection;
-        protected DataSet _dataSet;
+        protected readonly DbConnection DbConnection;
+        protected DataSet DataSet;
         private bool _isNew;
-        protected string _tableToLoad;
+        protected string TableToLoad;
         private string _query;
 
         public BaseForm()
         {
             InitializeComponent();
-            dbConnection = new DBConnection();
+            DbConnection = new DbConnection();
         }
 
         public void SetTableName(string tableName)
         {
-            _tableToLoad = tableName;
+            TableToLoad = tableName;
         }
 
         protected void SetQuery(string query)
@@ -42,9 +42,9 @@ namespace DataAccess
 
         protected virtual void FetchData()
         {
-            _dataSet = new DataSet();
-            _dataSet = dbConnection.RetrieveAllDataFromTable(_tableToLoad);
-            dgvTable.DataSource = _dataSet.Tables[0];
+            DataSet = new DataSet();
+            DataSet = DbConnection.RetrieveAllDataFromTable(TableToLoad);
+            dgvTable.DataSource = DataSet.Tables[0];
 
             BindDataToFields();
             CustomizeDataGridView();
@@ -57,7 +57,7 @@ namespace DataAccess
                 if (textBox.Tag != null)
                 {
                     textBox.DataBindings.Clear();
-                    textBox.DataBindings.Add("Text", _dataSet.Tables[0], textBox.Tag.ToString());
+                    textBox.DataBindings.Add("Text", DataSet.Tables[0], textBox.Tag.ToString());
                     textBox.Validated += OnTextBoxValidate;
                 }
             }
@@ -76,22 +76,22 @@ namespace DataAccess
             }
 
 
-            dbConnection.UpdateData(_query, _dataSet);
+            DbConnection.UpdateData(_query, DataSet);
 
             FetchData();
             _isNew = false;
         }
 
-        private void InsertRowFromFields()
+        protected virtual void InsertRowFromFields()
         {
-            DataRow dataRow = _dataSet.Tables[0].NewRow();
+            DataRow dataRow = DataSet.Tables[0].NewRow();
 
             foreach (TextBox textBox in this.Controls.OfType<TextBox>())
             {
                 dataRow[textBox.Tag.ToString()] = textBox.Text;
             }
 
-            _dataSet.Tables[0].Rows.Add(dataRow);
+            DataSet.Tables[0].Rows.Add(dataRow);
         }
 
         private void ClearFields()

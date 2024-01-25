@@ -18,12 +18,12 @@ namespace OrionSecureCore
             InitializeComponent();
         }
 
-        int count = 0;
+        int _count = 0;
         private void tmrSplash_Tick(object sender, EventArgs e)
         {
 
-            count++;
-            if (count > 2)
+            _count++;
+            if (_count > 2)
             {
                 tmrSplash.Enabled = false;
                 LoginScreen lgn = new LoginScreen();

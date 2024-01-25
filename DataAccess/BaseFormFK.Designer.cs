@@ -1,7 +1,7 @@
 ﻿
 namespace DataAccess
 {
-    partial class BaseFormFK
+    partial class BaseFormFk
     {
         /// <summary>
         /// Required designer variable.
@@ -36,7 +36,7 @@ namespace DataAccess
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1040, 682);
-            this.Name = "BaseFormFK";
+            this.Name = "BaseFormFk";
             this.Text = "Form333";
             this.ResumeLayout(false);
 

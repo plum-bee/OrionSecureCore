@@ -16,18 +16,18 @@ namespace OrionSecureCore
         public RestorePassword()
         {
             InitializeComponent();
-            hashUser = new HashUser();
-            connectionComponent = new SWDatabaseConnection();
+            _hashUser = new HashUser();
+            _connectionComponent = new SwDatabaseConnection();
         }
 
-        private HashUser hashUser;
-        private SWDatabaseConnection connectionComponent;
-        private string salt;
-        private string login;
+        private HashUser _hashUser;
+        private SwDatabaseConnection _connectionComponent;
+        private string _salt;
+        private string _login;
 
         public string Login
         {
-            set { login = value; }
+            set { _login = value; }
         }
 
         private void txtPassword_TextChanged(object sender, EventArgs e)
@@ -53,13 +53,13 @@ namespace OrionSecureCore
             
             if (string.Equals(password, repeatedPassword))
             {
-                salt = hashUser.CreateSalt();
+                _salt = _hashUser.CreateSalt();
 
-                hashedPassword = hashUser.CreatePassword(password, salt);
+                hashedPassword = _hashUser.CreatePassword(password, _salt);
 
-                UpdateSaltInDatabase(login, salt);
+                UpdateSaltInDatabase(_login, _salt);
 
-                UpdatePasswordInDatabase(login, hashedPassword);
+                UpdatePasswordInDatabase(_login, hashedPassword);
 
                 MessageBox.Show("Password Setted Successfully!");
 
@@ -72,14 +72,14 @@ namespace OrionSecureCore
         {
             string updateQuery = $"UPDATE Users SET Salt = '{salt}' WHERE Login = '{login}'";
 
-            connectionComponent.ExecuteSqlNonQuery(updateQuery);
+            _connectionComponent.ExecuteSqlNonQuery(updateQuery);
         }
 
         private void UpdatePasswordInDatabase(string login, string password)
         {
             string updateQuery = $"UPDATE Users SET Password = '{password}' WHERE Login = '{login}'";
 
-            connectionComponent.ExecuteSqlNonQuery(updateQuery);
+            _connectionComponent.ExecuteSqlNonQuery(updateQuery);
 
         }
     }

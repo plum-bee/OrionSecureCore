@@ -20,28 +20,21 @@ namespace DataAccess
         }
     }
 
-    public partial class BaseFormFK : BaseForm
+    public partial class BaseFormFk : BaseForm
     {
-        private Dictionary<string, ForeignKeyInfo> _foreignKeys;
-
-        public BaseFormFK() : base()
-        {
-            _foreignKeys = new Dictionary<string, ForeignKeyInfo>();
-        }
+        private readonly Dictionary<string, ForeignKeyInfo> _foreignKeys = new Dictionary<string, ForeignKeyInfo>();
 
         public void AddForeignKeyMapping(string tableName, string foreignKeyColumn, string displayColumn)
         {
-            if (!_foreignKeys.ContainsKey(foreignKeyColumn))
+            if (_foreignKeys.ContainsKey(foreignKeyColumn)) return;
+            try
             {
-                try
-                {
-                    var dataSet = dbConnection.RetrieveAllDataFromTable(tableName);
-                    _foreignKeys.Add(foreignKeyColumn, new ForeignKeyInfo(foreignKeyColumn, displayColumn, dataSet.Tables[0]));
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.ToString());
-                }
+                var dataSet = DbConnection.RetrieveAllDataFromTable(tableName);
+                _foreignKeys.Add(foreignKeyColumn, new ForeignKeyInfo(foreignKeyColumn, displayColumn, dataSet.Tables[0]));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
             }
         }
 
@@ -53,7 +46,7 @@ namespace DataAccess
 
         private void BindAllForeignKeyComboBoxes()
         {
-            foreach (ComboBox comboBox in this.Controls.OfType<ComboBox>())
+            foreach (var comboBox in this.Controls.OfType<ComboBox>())
             {
                 if (comboBox.Tag != null && _foreignKeys.ContainsKey(comboBox.Tag.ToString()))
                 {
@@ -62,13 +55,53 @@ namespace DataAccess
             }
         }
 
+        protected override void InsertRowFromFields()
+        {
+            var dataRow = DataSet.Tables[0].NewRow();
+
+            foreach (Control control in this.Controls)
+            {
+                switch (control)
+                {
+                    case TextBox textBox when textBox.Tag != null:
+                        dataRow[textBox.Tag.ToString()] = textBox.Text;
+                        break;
+                    case ComboBox comboBox when comboBox.Tag != null:
+                    {
+                        var selectedValue = comboBox.SelectedValue;
+                        if (selectedValue != null)
+                        {
+                            dataRow[comboBox.Tag.ToString()] = selectedValue;
+                        }
+                        else
+                        {
+                            dataRow[comboBox.Tag.ToString()] = "Unknown";
+                        }
+
+                        break;
+                    }
+                }
+            }
+
+            DataSet.Tables[0].Rows.Add(dataRow);
+        }
+
+
         private void BindComboBox(ComboBox comboBox, ForeignKeyInfo fkInfo)
         {
             comboBox.DataSource = fkInfo.ForeignKeyData;
             comboBox.DisplayMember = fkInfo.DisplayColumn;
             comboBox.ValueMember = fkInfo.ForeignKeyColumn;
+
             comboBox.DataBindings.Clear();
-            comboBox.DataBindings.Add("SelectedValue", _dataSet.Tables[0], fkInfo.ForeignKeyColumn, true, DataSourceUpdateMode.OnPropertyChanged);
+            var binding = new Binding("SelectedValue", DataSet.Tables[0], fkInfo.ForeignKeyColumn, true, DataSourceUpdateMode.OnPropertyChanged);
+            comboBox.DataBindings.Add(binding);
+
+            comboBox.SelectedIndexChanged += (sender, args) =>
+            {
+                comboBox.DataBindings["SelectedValue"]?.BindingManagerBase.EndCurrentEdit();
+            };
         }
+
     }
 }

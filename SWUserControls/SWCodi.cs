@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace SWUserControls
 {
-    public partial class SWCodi : UserControl
+    public partial class SwCodi : UserControl
     {
-        public SWCodi()
+        public SwCodi()
         {
             InitializeComponent();
         }
@@ -21,9 +21,9 @@ namespace SWUserControls
         private string _codeName;
         private string _descriptionName;
         private string _idName;
-        private string _formCS;
-        private string _classCS;
-        private string _controlID;
+        private string _formCs;
+        private string _classCs;
+        private string _controlId;
         public string TableName
         {
             get { return _tableName; }
@@ -48,22 +48,22 @@ namespace SWUserControls
             set { _idName = value; }
         }
 
-        public string FormCS
+        public string FormCs
         {
-            get { return _formCS; }
-            set { _formCS = value; }
+            get { return _formCs; }
+            set { _formCs = value; }
         }
 
-        public string ClassCS
+        public string ClassCs
         {
-            get { return _classCS; }
-            set { _classCS = value; }
+            get { return _classCs; }
+            set { _classCs = value; }
         }
 
-        public string ControlID
+        public string ControlId
         {
-            get { return _controlID; }
-            set { _controlID = value; }
+            get { return _controlId; }
+            set { _controlId = value; }
         }
 
         private void txtCode_Leave(object sender, EventArgs e)
