@@ -39,6 +39,7 @@ namespace OrionSecureCore
             // 
             // pictureBox1
             // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
@@ -50,7 +51,7 @@ namespace OrionSecureCore
             // 
             // pgbSplash
             // 
-            this.pgbSplash.Location = new System.Drawing.Point(325, 395);
+            this.pgbSplash.Location = new System.Drawing.Point(311, 506);
             this.pgbSplash.Name = "pgbSplash";
             this.pgbSplash.Size = new System.Drawing.Size(456, 23);
             this.pgbSplash.TabIndex = 6;
