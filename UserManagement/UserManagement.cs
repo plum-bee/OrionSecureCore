@@ -32,8 +32,6 @@ namespace UserManagement
 
             MyTable.Columns["idUser"].Visible = false;
             MyTable.Columns["Login"].Visible = false;
-            MyTable.Columns["CodeUser"].HeaderText = "Code";
-            MyTable.Columns["UserName"].HeaderText = "Username";
             MyTable.Columns["idUserRank"].Visible = false;
             MyTable.Columns["idUserCategory"].Visible = false;
             MyTable.Columns["Photo"].Visible = false;
@@ -41,6 +39,12 @@ namespace UserManagement
             MyTable.Columns["idSpecie"].Visible = false;
             MyTable.Columns["Salt"].Visible = false;
             MyTable.Columns["Password"].Visible = false;
+            MyTable.Columns["CodeUser"].HeaderText = "Code";
+            MyTable.Columns["UserName"].HeaderText = "Username";
+            MyTable.Columns["DescPlanet"].HeaderText = "Planet";
+            MyTable.Columns["DescSpecie"].HeaderText = "Specie";
+            MyTable.Columns["DescCategory"].HeaderText = "Category";
+            MyTable.Columns["DescRank"].HeaderText = "Rank";
         }
     }
 }
