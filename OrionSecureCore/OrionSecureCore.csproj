@@ -136,6 +136,7 @@
   <ItemGroup>
     <Content Include="icono2.ico" />
     <Content Include="images\check-mark.png" />
+    <Content Include="images\icons8-usuario-de-género-neutro-52.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataAccessLibrary\DataAccessLibrary.csproj">
