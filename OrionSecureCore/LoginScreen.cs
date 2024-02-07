@@ -50,7 +50,7 @@ namespace OrionSecureCore
                 else if (IsPasswordValid(password, storedHash))
                 {
 
-                    MainScreenCopy mainScreen = new MainScreenCopy();
+                    MainScreen mainScreen = new MainScreen();
 
                     this.Hide();
 
