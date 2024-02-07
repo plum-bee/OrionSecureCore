@@ -16,12 +16,12 @@ namespace OrionSecureCore
         public LoginScreen()
         {
             InitializeComponent();
-            connectionComponent = new SWDatabaseConnection();
+            connectionComponent = new SwDatabaseConnection();
             hashUser = new HashUser();
         }
 
         private const string DEFAULT_PASS = "12345aA";
-        private SWDatabaseConnection connectionComponent;
+        private SwDatabaseConnection connectionComponent;
         private HashUser hashUser;
         private string login;
 
