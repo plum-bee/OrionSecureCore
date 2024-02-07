@@ -19,15 +19,9 @@ namespace OrionSecureCore
 
             InitializeComponent();
 
-            // Configura el panel y el timer
-            pnlMenu.Width = 0;
-            pnlMenu.Height = this.Height;
-            pnlMenu.Dock = DockStyle.Left;
-            this.Controls.Add(pnlMenu);
-
-            tmr1.Interval = 33; // Cambia esto para ajustar la velocidad de la animación
+            pnlMenu.Width = 75;
+            tmr1.Interval = 30;
             tmr1.Tick += tmr1_Tick;
-
             
         }
 
@@ -35,9 +29,8 @@ namespace OrionSecureCore
         {
             if (_pnlOpen)
             {
-                
                 pnlMenu.Width -= 10;
-                if (pnlMenu.Width <= 0)
+                if (pnlMenu.Width <= 75)
                 {
                     tmr1.Stop();
                     _pnlOpen = false;
@@ -45,15 +38,15 @@ namespace OrionSecureCore
             }
             else
             {
-                
                 pnlMenu.Width += 10;
-                if (pnlMenu.Width >= 200)
+                if (pnlMenu.Width >= 250)
                 {
                     tmr1.Stop();
                     _pnlOpen = true;
                 }
             }
         }
+
 
         private void btnMenu_Click(object sender, EventArgs e)
         {

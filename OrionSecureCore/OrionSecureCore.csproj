@@ -52,11 +52,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MainScreenCopy.cs">
+    <Compile Include="MainScreen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainScreenCopy.Designer.cs">
-      <DependentUpon>MainScreenCopy.cs</DependentUpon>
+    <Compile Include="MainScreen.Designer.cs">
+      <DependentUpon>MainScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="RestorePassword.cs">
       <SubType>Form</SubType>
@@ -70,12 +70,6 @@
     </Compile>
     <Compile Include="LoginScreen.Designer.cs">
       <DependentUpon>LoginScreen.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MainScreen.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MainScreen.Designer.cs">
-      <DependentUpon>MainScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -94,9 +88,6 @@
     </Compile>
     <EmbeddedResource Include="LoginScreen.resx">
       <DependentUpon>LoginScreen.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MainScreenCopy.resx">
-      <DependentUpon>MainScreenCopy.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainScreen.resx">
       <DependentUpon>MainScreen.cs</DependentUpon>
