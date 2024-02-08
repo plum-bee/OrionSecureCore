@@ -15,7 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpeciesManagement", "Specie
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserManagement", "UserManagement\UserManagement.csproj", "{2EC3977B-359C-48D8-A0A3-803F1117550E}"
 EndProject
-Project("{7CF6DF6D-3B04-46F8-A40B-537D21BCA0B4}") = "DataAccessDocs", "DataAccessDocs\DataAccessDocs.shfbproj", "{7E943675-F697-45BE-A73D-F4275EE3407C}"
+Project("{7CF6DF6D-3B04-46F8-A40B-537D21BCA0B4}") = "DocsConnection", "DocsConnection\DocsConnection.shfbproj", "{AC15A7EF-5F67-43B9-8731-C8CFC73388A6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,10 +47,10 @@ Global
 		{2EC3977B-359C-48D8-A0A3-803F1117550E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2EC3977B-359C-48D8-A0A3-803F1117550E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2EC3977B-359C-48D8-A0A3-803F1117550E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7E943675-F697-45BE-A73D-F4275EE3407C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7E943675-F697-45BE-A73D-F4275EE3407C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7E943675-F697-45BE-A73D-F4275EE3407C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7E943675-F697-45BE-A73D-F4275EE3407C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC15A7EF-5F67-43B9-8731-C8CFC73388A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC15A7EF-5F67-43B9-8731-C8CFC73388A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC15A7EF-5F67-43B9-8731-C8CFC73388A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC15A7EF-5F67-43B9-8731-C8CFC73388A6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
