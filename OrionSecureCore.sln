@@ -16,6 +16,7 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserManagement", "UserManagement\UserManagement.csproj", "{2EC3977B-359C-48D8-A0A3-803F1117550E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FTPDownload", "FTPDownload\FTPDownload.csproj", "{9C99A975-A2FF-4033-8E9F-FFB68FE9A406}"
+Project("{7CF6DF6D-3B04-46F8-A40B-537D21BCA0B4}") = "DocsConnection", "DocsConnection\DocsConnection.shfbproj", "{AC15A7EF-5F67-43B9-8731-C8CFC73388A6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +52,10 @@ Global
 		{9C99A975-A2FF-4033-8E9F-FFB68FE9A406}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9C99A975-A2FF-4033-8E9F-FFB68FE9A406}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9C99A975-A2FF-4033-8E9F-FFB68FE9A406}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC15A7EF-5F67-43B9-8731-C8CFC73388A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC15A7EF-5F67-43B9-8731-C8CFC73388A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC15A7EF-5F67-43B9-8731-C8CFC73388A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC15A7EF-5F67-43B9-8731-C8CFC73388A6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
