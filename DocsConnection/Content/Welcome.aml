@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<topic id="c6408ee4-fc4e-4f43-9693-ee43d14bc414" revisionNumber="1">
+	<developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
+		<introduction>
+			<para>The DatabaseConnection class provides an abstract base for managing database connections and executing commands. It encapsulates common functionalities such as opening and closing connections, retrieving, and updating data.</para>
+		</introduction>
+
+		<section>
+			<title>Initialization</title>
+			<content>
+				<para>The DatabaseConnection constructor initializes a new instance, setting up the connection string and SQL connection. It fetches the connection string from the application's configuration.</para>
+			</content>
+		</section>
+
+		<section>
+			<title>Data Retrieval</title>
+			<content>
+				<para>Methods like RetrieveAllDataFromTable, RetrieveDataUsingQuery, and RetrieveDataUsingCommand allow for fetching data from the database in various ways, supporting both simple table queries and complex SQL commands.</para>
+				<list class="bullet">
+					<listItem>
+						<para>RetrieveAllDataFromTable(tableName) - Retrieves all data from a specified table.</para>
+					</listItem>
+					<listItem>
+						<para>RetrieveDataUsingQuery(sqlQuery) - Executes a specified SQL query and returns the result.</para>
+					</listItem>
+					<listItem>
+						<para>RetrieveDataUsingQuery(sqlQuery, tableName) - Similar to the above but structures the DataSet with a specified table name.</para>
+					</listItem>
+				</list>
+			</content>
+		</section>
+
+		<section>
+			<title>Data Modification</title>
+			<content>
+				<para>Methods like UpdateData and ExecuteSqlNonQuery facilitate modifying data within the database, supporting updates and executing non-query SQL commands.</para>
+				<list class="bullet">
+					<listItem>
+						<para>UpdateData(sqlQuery, dataSetToUpdate) - Updates data in the database based on the provided DataSet.</para>
+					</listItem>
+					<listItem>
+						<para>ExecuteSqlNonQuery(sqlQuery) - Executes an SQL non-query command like INSERT, UPDATE, or DELETE.</para>
+					</listItem>
+				</list>
+			</content>
+		</section>
+
+		<section>
+			<title>Advanced Usage</title>
+			<content>
+				<para>The DatabaseConnection class also supports advanced scenarios like generating query commands dynamically and executing commands within transactions.</para>
+				<list class="bullet">
+					<listItem>
+						<para>GenerateQuery(tableName, fieldValues) - Dynamically creates a SQL query command based on table name and field values.</para>
+					</listItem>
+					<listItem>
+						<para>ExecuteTransaction(command) - Executes a SQL command within a transaction, providing rollback capabilities in case of errors.</para>
+					</listItem>
+				</list>
+			</content>
+		</section>
+	</developerConceptualDocument>
+</topic>

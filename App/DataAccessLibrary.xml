@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DataAccessLibrary</name>
+    </assembly>
+    <members>
+        <member name="T:DataAccessLibrary.DatabaseConnection">
+            <summary>
+            Represents an abstract base class for database connections, encapsulating common functionality for managing connections and executing commands against a database.
+            </summary>
+        </member>
+        <member name="M:DataAccessLibrary.DatabaseConnection.#ctor">
+            <summary>
+            Initializes a new instance of the DatabaseConnection class, setting up the connection string and initializing the SQL connection.
+            </summary>
+        </member>
+        <member name="M:DataAccessLibrary.DatabaseConnection.OpenSqlConnection">
+            <summary>
+            Opens the SQL connection if it is not already open.
+            </summary>
+        </member>
+        <member name="M:DataAccessLibrary.DatabaseConnection.CloseSqlConnection">
+            <summary>
+            Closes the SQL connection if it is open.
+            </summary>
+        </member>
+        <member name="M:DataAccessLibrary.DatabaseConnection.RetrieveAllDataFromTable(System.String)">
+            <summary>
+            Retrieves all data from a specified table.
+            </summary>
+            <param name="tableName">The name of the table from which to retrieve data.</param>
+            <returns>A DataSet containing all rows from the specified table.</returns>
+            <example>
+            <code>
+            var dataSet = databaseConnection.RetrieveAllDataFromTable("Employees");
+            </code>
+            </example>
+        </member>
+        <member name="M:DataAccessLibrary.DatabaseConnection.RetrieveDataUsingQuery(System.String)">
+            <summary>
+            Retrieves data using a specified SQL query.
+            </summary>
+            <param name="sqlQuery">The SQL query to execute.</param>
+            <returns>A DataSet containing the data retrieved by the query.</returns>
+            <example>
+            <code>
+            var dataSet = databaseConnection.RetrieveDataUsingQuery("SELECT * FROM Employees WHERE DepartmentID = 1");
+            </code>
+            </example>
+        </member>
+        <member name="M:DataAccessLibrary.DatabaseConnection.RetrieveDataUsingQuery(System.String,System.String)">
+            <summary>
+            Retrieves data using a specified SQL query and a table name to structure the DataSet.
+            </summary>
+            <param name="sqlQuery">The SQL query to execute for data retrieval.</param>
+            <param name="tableName">The name to assign to the resulting table within the DataSet.</param>
+            <returns>A DataSet containing the data retrieved, structured with the specified table name.</returns>
+        </member>
+        <member name="M:DataAccessLibrary.DatabaseConnection.RetrieveDataUsingQuery(System.Data.SqlClient.SqlCommand)">
+            <summary>
+            Retrieves data using a specified SQL command.
+            </summary>
+            <param name="command">The SqlCommand to execute for data retrieval.</param>
+            <returns>A DataSet containing the data retrieved by executing the SqlCommand.</returns>
+        </member>
+        <member name="M:DataAccessLibrary.DatabaseConnection.UpdateData(System.String,System.Data.DataSet)">
+            <summary>
+            Updates data in the database using a specified SQL query and a DataSet.
+            </summary>
+            <param name="sqlQuery">The SQL query to use for updating data.</param>
+            <param name="dataSetToUpdate">The DataSet containing the data to be updated in the database.</param>
+        </member>
+        <member name="M:DataAccessLibrary.DatabaseConnection.ExecuteSqlNonQuery(System.String)">
+            <summary>
+            Executes a SQL non-query command (e.g., INSERT, UPDATE, DELETE).
+            </summary>
+            <param name="sqlQuery">The SQL query to execute.</param>
+        </member>
+        <member name="M:DataAccessLibrary.DatabaseConnection.GenerateQuery(System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Generates a SQL query command using a table name and a dictionary of field values.
+            </summary>
+            <param name="tableName">The name of the table to query.</param>
+            <param name="fieldValues">A dictionary containing field names and their corresponding values to include in the WHERE clause.</param>
+            <returns>A SqlCommand object ready to be executed.</returns>
+        </member>
+        <member name="M:DataAccessLibrary.DatabaseConnection.ExecuteTransaction(System.Data.SqlClient.SqlCommand)">
+            <summary>
+            Executes a SQL command within a transaction, rolling back the transaction in case of an error.
+            </summary>
+            <param name="command">The SqlCommand to execute within a transaction.</param>
+        </member>
+    </members>
+</doc>
