@@ -17,7 +17,7 @@ namespace OrdersManagement
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Priority()
         {
-            this.Orders = new HashSet<Order>();
+            this.Orders = new HashSet<Orders>();
         }
     
         public short idPriority { get; set; }
@@ -25,6 +25,6 @@ namespace OrdersManagement
         public string DescPriority { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Order> Orders { get; set; }
+        public virtual ICollection<Orders> Orders { get; set; }
     }
 }

@@ -12,29 +12,19 @@ namespace OrdersManagement
     using System;
     using System.Collections.Generic;
     
-    public partial class Planet
+    public partial class Agencies
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Planet()
+        public Agencies()
         {
-            this.OrdersDetails = new HashSet<OrdersDetail>();
+            this.OrderInfo = new HashSet<OrderInfo>();
         }
     
-        public int idPlanet { get; set; }
-        public string CodePlanet { get; set; }
-        public string DescPlanet { get; set; }
-        public Nullable<int> idSector { get; set; }
-        public string @long { get; set; }
-        public string lat { get; set; }
-        public string parsecs { get; set; }
-        public Nullable<int> idNatives { get; set; }
-        public Nullable<int> idFiliation { get; set; }
-        public string PlanetPicture { get; set; }
-        public string IPPlanet { get; set; }
-        public string PortPlanet { get; set; }
-        public string PortPlanet1 { get; set; }
+        public short idAgency { get; set; }
+        public string CodeAgency { get; set; }
+        public string DescAgency { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OrdersDetail> OrdersDetails { get; set; }
+        public virtual ICollection<OrderInfo> OrderInfo { get; set; }
     }
 }

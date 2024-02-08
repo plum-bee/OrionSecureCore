@@ -12,15 +12,10 @@ namespace OrdersManagement
     using System;
     using System.Collections.Generic;
     
-    public partial class OrderInfo
+    public partial class Alumnes
     {
-        public short idOrderInfo { get; set; }
-        public short idOrder { get; set; }
-        public short idAgency { get; set; }
-        public short idOperationalArea { get; set; }
-    
-        public virtual Agencies Agencies { get; set; }
-        public virtual OperationalAreas OperationalAreas { get; set; }
-        public virtual Orders Orders { get; set; }
+        public int idAlumne { get; set; }
+        public string Nom { get; set; }
+        public string Bandol { get; set; }
     }
 }

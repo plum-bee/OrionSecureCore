@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\Rafa\Desktop\OrionSecureCore\OrdersManagement\OrdersModel.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\rafael.chambilla\OneDrive - Travelport\S2AM\ABP\OrionSecureCore\OrdersManagement\OrderModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

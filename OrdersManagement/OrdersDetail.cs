@@ -21,8 +21,8 @@ namespace OrdersManagement
         public Nullable<short> Quantity { get; set; }
         public Nullable<System.DateTime> DeliveryDate { get; set; }
     
-        public virtual Order Order { get; set; }
-        public virtual Planet Planet { get; set; }
-        public virtual Reference Reference { get; set; }
+        public virtual Orders Orders { get; set; }
+        public virtual Planets Planets { get; set; }
+        public virtual References References { get; set; }
     }
 }

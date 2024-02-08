@@ -12,19 +12,19 @@ namespace OrdersManagement
     using System;
     using System.Collections.Generic;
     
-    public partial class Factory
+    public partial class OperationalAreas
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Factory()
+        public OperationalAreas()
         {
-            this.Orders = new HashSet<Order>();
+            this.OrderInfo = new HashSet<OrderInfo>();
         }
     
-        public short idFactory { get; set; }
-        public string codeFactory { get; set; }
-        public string DescFactory { get; set; }
+        public short idOperationalArea { get; set; }
+        public string CodeOperationalArea { get; set; }
+        public string DescOperationalArea { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Order> Orders { get; set; }
+        public virtual ICollection<OrderInfo> OrderInfo { get; set; }
     }
 }

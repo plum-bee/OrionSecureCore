@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography.Xml;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -19,153 +20,211 @@ namespace OrdersManagement
             InitializeComponent();
         }
 
-        SecureCoreEntities db;
-        Order currentOrder = null;
+        SecureCoreOrderEntities db;
+        Orders currentOrder = null;
+
+        List<Agencies> agenciesList = new List<Agencies>();
+        List<OrderInfo> orderInfoList = new List<OrderInfo>();
+        List<OrdersDetail> ordersDetailList = new List<OrdersDetail>();
+        List<Planets> planetsList = new List<Planets>();
+        List<Reference> referencesList = new List<Reference>();
+        List<Orders> ordersList = new List<Orders>();
+        List<Factories> factoriesList = new List<Factories>();
+        List<Priority> prioritiesList = new List<Priority>();
 
         private void InsertDataFromEDI(string filePath)
         {
-            // Initialize the database context
-            db = new SecureCoreEntities();
+            db = new SecureCoreOrderEntities();
 
-            // Read all lines from the provided EDI file
             var lines = File.ReadAllLines(filePath);
 
-            // Loop through each line in the file
             foreach (var line in lines)
             {
-                // Split the line into parts using '|' as the delimiter
                 var parts = line.Split('|');
 
-                // Check if the line is not empty
                 if (parts.Length > 0)
                 {
-                    // Handle each line based on its prefix (the first part of the line)
                     switch (parts[0])
                     {
                         case "ORD":
-                            // Process an 'ORD' line
                             HandleOrderLine(parts);
                             break;
                         case "DTM":
-                            // Process a 'DTM' line
                             if (currentOrder != null)
                             {
                                 HandleDTMLine(parts, currentOrder);
                             }
                             break;
-
                         case "NADMS":
-                            // Process a 'NADMS' line
                             if (currentOrder != null)
                             {
                                 HandleNADMSLine(parts, currentOrder);
                             }
                             break;
+                        case "NADMR":
+                            if (currentOrder != null)
+                            {
+                                HandleNADMRLine(parts, currentOrder);
+                            }
+                            break;
+                        case "LIN":
+                            if (currentOrder != null)
+                            {
+                                HandleLINLine(parts, currentOrder);
+                            }
+                            break;
+                        case "QTYLIN":
+                            if (currentOrder != null)
+                            {
+                                HandleQTYLINLine(parts, currentOrder);
+                            }
+
+                            break;
+                        case "DTMLIN":
+                            if (currentOrder != null)
+                            {
+                                HandleDTMLINLine(parts, currentOrder);
+                            }
+                            break;
+
                         default:
-                            // Handle any unrecognized line types
                             break;
                     }
                 }
             }
 
-            // Save all changes made to the database context
-            db.SaveChanges();
+            //db.SaveChanges();
         }
 
         private void HandleOrderLine(string[] parts)
         {
-            // Ensure that the 'ORD' line has at least 3 parts
             if (parts.Length >= 3)
             {
-                // Extract the order code and priority code from the line
                 var codeOrder = parts[1];
                 var codePriority = parts[2];
 
-                // Check if a priority with the provided code already exists in the database
-                var priority = db.Priorities.FirstOrDefault(p => p.CodePriority == codePriority);
-                if (priority == null)
-                {
-                    // If it doesn't exist, create a new Priority object and add it to the database
-                    priority = new Priority { CodePriority = codePriority };
-                    db.Priorities.Add(priority);
-                    // Save immediately to assign an ID to the new Priority
-                    db.SaveChanges();
-                }
+                var priority = db.Priority.FirstOrDefault(p => p.CodePriority == codePriority);
 
-                // Create a new Order object with the extracted order code
-                var order = new Order
+                var order = new Orders
                 {
                     codeOrder = codeOrder,
-                    // Set the PriorityId to the ID of the found or newly added Priority
                     IdPriority = priority.idPriority
                 };
 
-                // Add the new Order object to the database
-                db.Orders.Add(order);
-            }
-            else
-            {
-                // Optionally, handle the case where the 'ORD' line does not have enough parts
+                ordersList.Add(order);
             }
         }
 
-        private void HandleDTMLine(string[] parts, Order currentOrder)
+        private void HandleDTMLine(string[] parts, Orders currentOrder)
         {
-            // Ensure that the 'DTM' line has at least 2 parts
             if (parts.Length >= 2)
             {
-                // Extract the date from the line
                 var dateStr = parts[1];
 
-                // Parse the date assuming it's in the format 'yyyyMMdd'
-                if (DateTime.TryParseExact(dateStr, "yyyyMMdd", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime dateOrder))
+                if (DateTime.TryParseExact(dateStr, "yyyyMMdd", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime newDateTime))
                 {
-                    // Set the dateOrder property of the current order
-                    currentOrder.dateOrder = dateOrder;
+                    currentOrder.dateOrder = newDateTime;
                 }
-             
             }
         }
 
-        private void HandleNADMSLine(string[] parts, Order currentOrder)
+        private void HandleNADMSLine(string[] parts, Orders currentOrder)
         {
-            // Ensure that the 'NADMS' line has at least 3 parts
             if (parts.Length >= 3)
             {
-                // Extract the operational area code and agency code from the line
                 var codeOperationalArea = parts[1];
                 var codeAgency = parts[2];
 
-                // Check if an operational area with the provided code already exists in the database
                 var operationalArea = db.OperationalAreas.FirstOrDefault(oa => oa.CodeOperationalArea == codeOperationalArea);
-                if (operationalArea == null)
-                {
-                    // If it doesn't exist, create a new OperationalArea object and add it to the database
-                    operationalArea = new OperationalArea { CodeOperationalArea = codeOperationalArea };
-                    db.OperationalAreas.Add(operationalArea);
-                    // Save immediately to assign an ID to the new OperationalArea
-                    db.SaveChanges();
-                }
-
-                // Check if an agency with the provided code already exists in the database
                 var agency = db.Agencies.FirstOrDefault(a => a.CodeAgency == codeAgency);
-                if (agency == null)
+
+                var currentOrderInfo = db.OrderInfo.FirstOrDefault(oi => oi.idOrder == currentOrder.idOrder);
+
+                if (currentOrderInfo == null) return;
+
+                if (agency != null) currentOrderInfo.idAgency = agency.idAgency;
+                if (operationalArea != null) currentOrderInfo.idOperationalArea = operationalArea.idOperationalArea;
+            }
+        }
+
+        private void HandleNADMRLine(string[] parts, Orders currentOrder)
+        {
+            if (parts.Length >= 2)
+            {
+                var codeFactory = parts[1];
+
+                var factory = db.Factories.FirstOrDefault(f => f.codeFactory == codeFactory);
+
+                if (factory != null)
                 {
-                    // If it doesn't exist, create a new Agency object and add it to the database
-                    agency = new Agency { CodeAgency = codeAgency };
-                    db.Agencies.Add(agency);
-                    // Save immediately to assign an ID to the new Agency
-                    db.SaveChanges();
+                    currentOrder.IdFactory = factory.idFactory;
+                }
+            }
+        }
+
+        private void HandleLINLine(string[] parts, Orders currentOrder)
+        {
+            if (parts.Length >= 4)
+            {
+                var codePlanet = parts[1];
+                var codeReference = parts[2];
+
+                var planet = db.Planets.FirstOrDefault(p => p.CodePlanet == codePlanet);
+
+                var reference = db.References.FirstOrDefault(r => r.codeReference == codeReference);
+
+                var orderDetail = new OrdersDetail
+                {
+                    idOrder = currentOrder.idOrder,
+                    idPlanet = planet.idPlanet,
+                    idReference = reference.idReference
+                };
+
+                
+            }
+        }
+
+        private void HandleQTYLINLine(string[] parts, Orders currentOrder)
+        {
+            if (parts.Length >= 3)
+            {
+                var qualifier = parts[1];
+                var quantityStr = parts[2];
+
+                if (!int.TryParse(quantityStr, out var quantity)) return;
+
+                var orderDetail = new OrdersDetail
+                {
+                    idOrder = currentOrder.idOrder,
+                    Quantity = (short?)(qualifier == "21" ? quantity : (qualifier == "61" ? -quantity : quantity))
+                };
+
+                db.OrdersDetail.Add(orderDetail);
+            }
+        }
+
+        private void HandleDTMLINLine(string[] parts, Orders currentOrder)
+        {
+            if (parts.Length >= 2)
+            {
+                var deliveryDateStr = parts[1];
+
+                if (DateTime.TryParseExact(deliveryDateStr, "yyyyMMdd", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime deliveryDate))
+                {
+                    var lastOrderDetail = db.OrdersDetail
+                        .Where(od => od.idOrder == currentOrder.idOrder)
+                        .OrderByDescending(od => od.idOrderDetail)
+                        .FirstOrDefault();
+
+                    if (lastOrderDetail != null)
+                    {
+                        lastOrderDetail.DeliveryDate = deliveryDate;
+                    }
+
                 }
 
-                // Link the operational area and agency to the current order
-                currentOrder.IdOperationalArea = operationalArea.IdOperationalArea; // Assuming there is a foreign key relationship
-                currentOrder.IdAgency = agency.IdAgency; // Assuming there is a foreign key relationship
             }
-            else
-            {
-                // Optionally, handle the case where the 'NADMS' line does not have enough parts
-            }
+
         }
 
     }

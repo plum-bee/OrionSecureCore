@@ -12,21 +12,26 @@ namespace OrdersManagement
     using System;
     using System.Collections.Generic;
     
-    public partial class Reference
+    public partial class Orders
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Reference()
+        public Orders()
         {
-            this.OrdersDetails = new HashSet<OrdersDetail>();
+            this.OrderInfo = new HashSet<OrderInfo>();
+            this.OrdersDetail = new HashSet<OrdersDetail>();
         }
     
-        public short idReference { get; set; }
-        public string codeReference { get; set; }
-        public string descReference { get; set; }
-        public string Photo { get; set; }
-        public string VideoExplode { get; set; }
+        public short idOrder { get; set; }
+        public string codeOrder { get; set; }
+        public Nullable<System.DateTime> dateOrder { get; set; }
+        public short IdPriority { get; set; }
+        public short IdFactory { get; set; }
     
+        public virtual Factories Factories { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OrdersDetail> OrdersDetails { get; set; }
+        public virtual ICollection<OrderInfo> OrderInfo { get; set; }
+        public virtual Priority Priority { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<OrdersDetail> OrdersDetail { get; set; }
     }
 }

@@ -12,19 +12,21 @@ namespace OrdersManagement
     using System;
     using System.Collections.Generic;
     
-    public partial class Agency
+    public partial class References
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Agency()
+        public References()
         {
-            this.OrderInfoes = new HashSet<OrderInfo>();
+            this.OrdersDetail = new HashSet<OrdersDetail>();
         }
     
-        public short idAgency { get; set; }
-        public string CodeAgency { get; set; }
-        public string DescAgency { get; set; }
+        public short idReference { get; set; }
+        public string codeReference { get; set; }
+        public string descReference { get; set; }
+        public string Photo { get; set; }
+        public string VideoExplode { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OrderInfo> OrderInfoes { get; set; }
+        public virtual ICollection<OrdersDetail> OrdersDetail { get; set; }
     }
 }
