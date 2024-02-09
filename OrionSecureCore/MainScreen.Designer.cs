@@ -39,8 +39,9 @@ namespace OrionSecureCore
             this.pnlFTP = new System.Windows.Forms.Panel();
             this.lblFTP = new System.Windows.Forms.Label();
             this.picFTP = new System.Windows.Forms.PictureBox();
-            this.pnlOrders = new SWUserControls.FormLauncher();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.frmLauncherFactories = new SWUserControls.FormLauncher();
+            this.pnlOrders = new SWUserControls.FormLauncher();
             this.pnlUsers = new SWUserControls.FormLauncher();
             this.pnlSpecies = new SWUserControls.FormLauncher();
             this.panel1.SuspendLayout();
@@ -96,6 +97,7 @@ namespace OrionSecureCore
             // pnlMenu
             // 
             this.pnlMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(45)))), ((int)(((byte)(145)))));
+            this.pnlMenu.Controls.Add(this.frmLauncherFactories);
             this.pnlMenu.Controls.Add(this.pnlFTP);
             this.pnlMenu.Controls.Add(this.pnlOrders);
             this.pnlMenu.Controls.Add(this.pnlUsers);
@@ -121,7 +123,7 @@ namespace OrionSecureCore
             // 
             this.lblFTP.AutoSize = true;
             this.lblFTP.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold);
-            this.lblFTP.ForeColor = System.Drawing.Color.Gray;
+            this.lblFTP.ForeColor = System.Drawing.Color.White;
             this.lblFTP.Location = new System.Drawing.Point(119, 44);
             this.lblFTP.Name = "lblFTP";
             this.lblFTP.Size = new System.Drawing.Size(63, 29);
@@ -140,6 +142,27 @@ namespace OrionSecureCore
             this.picFTP.TabStop = false;
             this.picFTP.Click += new System.EventHandler(this.btnFTP_Click);
             // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(16)))), ((int)(((byte)(51)))));
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(327, 52);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1025, 716);
+            this.panel3.TabIndex = 5;
+            // 
+            // frmLauncherFactories
+            // 
+            this.frmLauncherFactories.Classe = "FactoriesManagement";
+            this.frmLauncherFactories.Descripcio = "Factories";
+            this.frmLauncherFactories.DisplayPanel = this.panel3;
+            this.frmLauncherFactories.Form = "frmFactoriesManagement";
+            this.frmLauncherFactories.Location = new System.Drawing.Point(0, 542);
+            this.frmLauncherFactories.Name = "frmLauncherFactories";
+            this.frmLauncherFactories.PictureBoxImage = ((System.Drawing.Image)(resources.GetObject("frmLauncherFactories.PictureBoxImage")));
+            this.frmLauncherFactories.Size = new System.Drawing.Size(321, 120);
+            this.frmLauncherFactories.TabIndex = 7;
+            // 
             // pnlOrders
             // 
             this.pnlOrders.Classe = "EDIProcessor";
@@ -151,15 +174,6 @@ namespace OrionSecureCore
             this.pnlOrders.PictureBoxImage = ((System.Drawing.Image)(resources.GetObject("pnlOrders.PictureBoxImage")));
             this.pnlOrders.Size = new System.Drawing.Size(321, 120);
             this.pnlOrders.TabIndex = 4;
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(16)))), ((int)(((byte)(51)))));
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(327, 52);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1025, 716);
-            this.panel3.TabIndex = 5;
             // 
             // pnlUsers
             // 
@@ -221,6 +235,7 @@ namespace OrionSecureCore
         private System.Windows.Forms.Panel pnlFTP;
         private System.Windows.Forms.PictureBox picFTP;
         private System.Windows.Forms.Label lblFTP;
+        private SWUserControls.FormLauncher frmLauncherFactories;
     }
 }
 
