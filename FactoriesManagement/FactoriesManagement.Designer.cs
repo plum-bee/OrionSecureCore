@@ -35,6 +35,8 @@ namespace FactoriesManagement
             this.btnLoad = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFactories)).BeginInit();
             this.SuspendLayout();
             // 
@@ -43,12 +45,13 @@ namespace FactoriesManagement
             this.dgvFactories.AllowUserToAddRows = false;
             this.dgvFactories.AllowUserToDeleteRows = false;
             this.dgvFactories.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvFactories.Location = new System.Drawing.Point(12, 166);
+            this.dgvFactories.Location = new System.Drawing.Point(14, 208);
+            this.dgvFactories.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dgvFactories.Name = "dgvFactories";
             this.dgvFactories.ReadOnly = true;
             this.dgvFactories.RowHeadersWidth = 51;
             this.dgvFactories.RowTemplate.Height = 24;
-            this.dgvFactories.Size = new System.Drawing.Size(1013, 299);
+            this.dgvFactories.Size = new System.Drawing.Size(1140, 374);
             this.dgvFactories.TabIndex = 0;
             // 
             // swTextboxDesc
@@ -58,9 +61,10 @@ namespace FactoriesManagement
             this.swTextboxDesc.DefaultColor = System.Drawing.SystemColors.Window;
             this.swTextboxDesc.FocusColor = System.Drawing.Color.Yellow;
             this.swTextboxDesc.IsForeignKey = false;
-            this.swTextboxDesc.Location = new System.Drawing.Point(186, 12);
+            this.swTextboxDesc.Location = new System.Drawing.Point(239, 47);
+            this.swTextboxDesc.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.swTextboxDesc.Name = "swTextboxDesc";
-            this.swTextboxDesc.Size = new System.Drawing.Size(100, 22);
+            this.swTextboxDesc.Size = new System.Drawing.Size(243, 26);
             this.swTextboxDesc.TabIndex = 2;
             this.swTextboxDesc.Tag = "DescFactory";
             this.swTextboxDesc.TextType = SWUserControls.SwTextbox.SwTextType.Text;
@@ -72,18 +76,20 @@ namespace FactoriesManagement
             this.swTextboxCode.DefaultColor = System.Drawing.SystemColors.Window;
             this.swTextboxCode.FocusColor = System.Drawing.Color.Yellow;
             this.swTextboxCode.IsForeignKey = false;
-            this.swTextboxCode.Location = new System.Drawing.Point(13, 13);
+            this.swTextboxCode.Location = new System.Drawing.Point(15, 47);
+            this.swTextboxCode.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.swTextboxCode.Name = "swTextboxCode";
-            this.swTextboxCode.Size = new System.Drawing.Size(100, 22);
+            this.swTextboxCode.Size = new System.Drawing.Size(151, 26);
             this.swTextboxCode.TabIndex = 1;
             this.swTextboxCode.Tag = "codeFactory";
             this.swTextboxCode.TextType = SWUserControls.SwTextbox.SwTextType.Text;
             // 
             // btnLoad
             // 
-            this.btnLoad.Location = new System.Drawing.Point(950, 137);
+            this.btnLoad.Location = new System.Drawing.Point(1069, 171);
+            this.btnLoad.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnLoad.Name = "btnLoad";
-            this.btnLoad.Size = new System.Drawing.Size(75, 23);
+            this.btnLoad.Size = new System.Drawing.Size(84, 29);
             this.btnLoad.TabIndex = 3;
             this.btnLoad.Text = "Load";
             this.btnLoad.UseVisualStyleBackColor = true;
@@ -91,9 +97,10 @@ namespace FactoriesManagement
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(13, 137);
+            this.btnAdd.Location = new System.Drawing.Point(15, 171);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnAdd.Size = new System.Drawing.Size(84, 29);
             this.btnAdd.TabIndex = 4;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
@@ -101,25 +108,47 @@ namespace FactoriesManagement
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(110, 137);
+            this.btnUpdate.Location = new System.Drawing.Point(124, 171);
+            this.btnUpdate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(75, 23);
+            this.btnUpdate.Size = new System.Drawing.Size(84, 29);
             this.btnUpdate.TabIndex = 5;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 23);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(47, 20);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Code";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(235, 23);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(89, 20);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Description";
+            // 
             // frmFactoriesManagement
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1037, 477);
+            this.ClientSize = new System.Drawing.Size(1167, 596);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnLoad);
             this.Controls.Add(this.swTextboxDesc);
             this.Controls.Add(this.swTextboxCode);
             this.Controls.Add(this.dgvFactories);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "frmFactoriesManagement";
             this.Text = "Factories Management";
             ((System.ComponentModel.ISupportInitialize)(this.dgvFactories)).EndInit();
@@ -136,6 +165,8 @@ namespace FactoriesManagement
         private System.Windows.Forms.Button btnLoad;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }
 
