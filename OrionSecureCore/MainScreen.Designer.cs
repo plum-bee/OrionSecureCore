@@ -36,8 +36,8 @@ namespace OrionSecureCore
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pnlMenu = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.pnlOrders = new SWUserControls.FormLauncher();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.pnlUsers = new SWUserControls.FormLauncher();
             this.pnlSpecies = new SWUserControls.FormLauncher();
             this.panel1.SuspendLayout();
@@ -100,6 +100,18 @@ namespace OrionSecureCore
             this.pnlMenu.Size = new System.Drawing.Size(327, 716);
             this.pnlMenu.TabIndex = 4;
             // 
+            // pnlOrders
+            // 
+            this.pnlOrders.Classe = "FactoriesManagement";
+            this.pnlOrders.Descripcio = "Default";
+            this.pnlOrders.DisplayPanel = this.panel3;
+            this.pnlOrders.Form = "frmFactoriesManagement";
+            this.pnlOrders.Location = new System.Drawing.Point(0, 466);
+            this.pnlOrders.Name = "pnlOrders";
+            this.pnlOrders.PictureBoxImage = null;
+            this.pnlOrders.Size = new System.Drawing.Size(426, 180);
+            this.pnlOrders.TabIndex = 4;
+            // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(16)))), ((int)(((byte)(51)))));
@@ -108,18 +120,6 @@ namespace OrionSecureCore
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1025, 716);
             this.panel3.TabIndex = 5;
-            // 
-            // pnlOrders
-            // 
-            this.pnlOrders.Classe = "EDIProcessor";
-            this.pnlOrders.Descripcio = "Default";
-            this.pnlOrders.DisplayPanel = this.panel3;
-            this.pnlOrders.Form = "frmOrdersProcessor";
-            this.pnlOrders.Location = new System.Drawing.Point(0, 466);
-            this.pnlOrders.Name = "pnlOrders";
-            this.pnlOrders.PictureBoxImage = null;
-            this.pnlOrders.Size = new System.Drawing.Size(426, 180);
-            this.pnlOrders.TabIndex = 4;
             // 
             // pnlUsers
             // 
