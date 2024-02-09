@@ -112,13 +112,13 @@ namespace OrionSecureCore
             // pnlOrders
             // 
             this.pnlOrders.Classe = "EDIProcessor";
-            this.pnlOrders.Descripcio = "Default";
+            this.pnlOrders.Descripcio = "Orders";
             this.pnlOrders.DisplayPanel = this.panel3;
             this.pnlOrders.Form = "frmOrdersProcessor";
-            this.pnlOrders.Location = new System.Drawing.Point(0, 466);
+            this.pnlOrders.Location = new System.Drawing.Point(0, 312);
             this.pnlOrders.Name = "pnlOrders";
-            this.pnlOrders.PictureBoxImage = null;
-            this.pnlOrders.Size = new System.Drawing.Size(426, 180);
+            this.pnlOrders.PictureBoxImage = ((System.Drawing.Image)(resources.GetObject("pnlOrders.PictureBoxImage")));
+            this.pnlOrders.Size = new System.Drawing.Size(321, 120);
             this.pnlOrders.TabIndex = 4;
             // 
             // pnlUsers
@@ -127,10 +127,10 @@ namespace OrionSecureCore
             this.pnlUsers.Descripcio = "Users";
             this.pnlUsers.DisplayPanel = this.panel3;
             this.pnlUsers.Form = "UserManagement";
-            this.pnlUsers.Location = new System.Drawing.Point(0, 266);
+            this.pnlUsers.Location = new System.Drawing.Point(0, 195);
             this.pnlUsers.Name = "pnlUsers";
             this.pnlUsers.PictureBoxImage = ((System.Drawing.Image)(resources.GetObject("pnlUsers.PictureBoxImage")));
-            this.pnlUsers.Size = new System.Drawing.Size(321, 194);
+            this.pnlUsers.Size = new System.Drawing.Size(321, 120);
             this.pnlUsers.TabIndex = 3;
             // 
             // pnlSpecies
@@ -142,7 +142,7 @@ namespace OrionSecureCore
             this.pnlSpecies.Location = new System.Drawing.Point(0, 78);
             this.pnlSpecies.Name = "pnlSpecies";
             this.pnlSpecies.PictureBoxImage = ((System.Drawing.Image)(resources.GetObject("pnlSpecies.PictureBoxImage")));
-            this.pnlSpecies.Size = new System.Drawing.Size(321, 194);
+            this.pnlSpecies.Size = new System.Drawing.Size(321, 120);
             this.pnlSpecies.TabIndex = 2;
             // 
             // MainScreen

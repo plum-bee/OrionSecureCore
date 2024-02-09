@@ -173,6 +173,19 @@
         YII=
 </value>
   </data>
+  <data name="pnlOrders.PictureBoxImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
+        EwAACxMBAJqcGAAAAZZJREFUaEPt1r1NA1EQRWHn0AJQEWUQYIla6IGfaqAPSExsEsxd+xgBK01wvbMX
+        JH/SC7BH582TEGJx9B9tNptLnSedd50prHWuyc9DFw6P6PChc8M1/XTZ8/ba6Q0PGc6Sq3rpoql+nX5b
+        6sz3mOHGDrSvdPaP6f010wUtyM/3GMVbkN/Sj/2PUbgF+S/6qPcxirYg/4M+7nuMgi3Ij+irnsco1uWE
+        K0b03fR/mhXqcqtzyjUj+u77Yw7/d0aRv2DNOj5CcazjoxPHOj46cazjoxPHOj46cazjoxPHOj46cazj
+        oxPHOj46cazjo1Ni1EamxKiPTolRG5kSoz46cazjoxPHOj46JUZtZEqM+uiUGLWRKTHqoxPHOj46cazj
+        o1Ni1EamxKiPTolRG5kSoz46cazjoxPHOj46JUZLjNrI+OiUGC0xaiPjoxPHOj46cazjoxPHOj46cazj
+        oxPHOj46cazjU+Ntl4pasY5PkcddK+qedXyKXOi8bnMZLzpnrHMYhc51HnRWOnMZ7rrTmeYRR7NaLD4B
+        8KfmHxcOJmMAAAAASUVORK5CYII=
+</value>
+  </data>
   <data name="pnlUsers.PictureBoxImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAANAAAADQCAYAAAB2pO90AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAu

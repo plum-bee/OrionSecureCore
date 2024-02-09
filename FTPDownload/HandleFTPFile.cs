@@ -4,7 +4,7 @@ using System.Xml;
 
 namespace FTPDownload
 {
-    class Program
+    class HandleFTPFile
     {
         static void Main()
         {
