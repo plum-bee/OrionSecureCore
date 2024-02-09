@@ -49,7 +49,6 @@ namespace EDIProcessor
             }
         }
 
-
         private void LoadEDIOrder(string filePath)
         {
             if (filePath != null)
@@ -128,11 +127,11 @@ namespace EDIProcessor
                         };
 
             DataTable dataTable = new DataTable("OrderDetails");
-            dataTable.Columns.Add("CodeOrder", typeof(string));
-            dataTable.Columns.Add("DateOrder", typeof(DateTime));
-            dataTable.Columns.Add("FactoryDescription", typeof(string));
-            dataTable.Columns.Add("AgencyDescription", typeof(string));
-            dataTable.Columns.Add("OperationalAreaDescription", typeof(string));
+            dataTable.Columns.Add("Code", typeof(string));
+            dataTable.Columns.Add("Date", typeof(DateTime));
+            dataTable.Columns.Add("Factory", typeof(string));
+            dataTable.Columns.Add("Agency", typeof(string));
+            dataTable.Columns.Add("Area", typeof(string));
 
             foreach (var detail in query)
             {
@@ -140,7 +139,27 @@ namespace EDIProcessor
             }
 
             dgvOrdersDetail.DataSource = dataTable;
+            BindDataToFields(dataTable);
         }
+
+        private void BindDataToFields(DataTable dataTable)
+        {
+            foreach (var textBox in this.Controls.OfType<TextBox>())
+            {
+                if (textBox.Tag == null) continue;
+                textBox.DataBindings.Clear();
+                textBox.DataBindings.Add("Text", dataTable, textBox.Tag.ToString());
+                textBox.Validated += OnTextBoxValidate;
+
+                textBox.ReadOnly = true;
+            }
+        }
+
+        private void OnTextBoxValidate(object sender, EventArgs e)
+        {
+            ((TextBox)sender).DataBindings[0].BindingManagerBase.EndCurrentEdit();
+        }
+
 
         private void SaveOrder()
         {

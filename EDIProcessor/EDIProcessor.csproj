@@ -156,5 +156,11 @@
       <LastGenOutput>OrdersModel.cs</LastGenOutput>
     </Content>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SWUserControls\SWUserControls.csproj">
+      <Project>{615B62D9-497E-4B57-8C25-EDD6F5787B9F}</Project>
+      <Name>SWUserControls</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
