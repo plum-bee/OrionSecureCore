@@ -134,6 +134,10 @@
       <Project>{3b0cddc0-8477-4a85-bd65-f62f71f04f8a}</Project>
       <Name>DataAccessLibrary</Name>
     </ProjectReference>
+    <ProjectReference Include="..\FTPDownload\FTPDownload.csproj">
+      <Project>{9c99a975-a2ff-4033-8e9f-ffb68fe9a406}</Project>
+      <Name>FTPDownload</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SWUserControls\SWUserControls.csproj">
       <Project>{615b62d9-497e-4b57-8c25-edd6f5787b9f}</Project>
       <Name>SWUserControls</Name>
