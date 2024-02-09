@@ -36,6 +36,9 @@ namespace OrionSecureCore
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pnlMenu = new System.Windows.Forms.Panel();
+            this.pnlFTP = new System.Windows.Forms.Panel();
+            this.lblFTP = new System.Windows.Forms.Label();
+            this.picFTP = new System.Windows.Forms.PictureBox();
             this.pnlOrders = new SWUserControls.FormLauncher();
             this.panel3 = new System.Windows.Forms.Panel();
             this.pnlUsers = new SWUserControls.FormLauncher();
@@ -43,6 +46,8 @@ namespace OrionSecureCore
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlMenu.SuspendLayout();
+            this.pnlFTP.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picFTP)).BeginInit();
             this.SuspendLayout();
             // 
             // tmr1
@@ -91,6 +96,7 @@ namespace OrionSecureCore
             // pnlMenu
             // 
             this.pnlMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(45)))), ((int)(((byte)(145)))));
+            this.pnlMenu.Controls.Add(this.pnlFTP);
             this.pnlMenu.Controls.Add(this.pnlOrders);
             this.pnlMenu.Controls.Add(this.pnlUsers);
             this.pnlMenu.Controls.Add(this.pnlSpecies);
@@ -100,16 +106,50 @@ namespace OrionSecureCore
             this.pnlMenu.Size = new System.Drawing.Size(327, 716);
             this.pnlMenu.TabIndex = 4;
             // 
+            // pnlFTP
+            // 
+            this.pnlFTP.Controls.Add(this.lblFTP);
+            this.pnlFTP.Controls.Add(this.picFTP);
+            this.pnlFTP.Location = new System.Drawing.Point(0, 310);
+            this.pnlFTP.Name = "pnlFTP";
+            this.pnlFTP.Size = new System.Drawing.Size(321, 120);
+            this.pnlFTP.TabIndex = 6;
+            this.pnlFTP.Click += new System.EventHandler(this.btnFTP_Click);
+            this.pnlFTP.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlColor_Paint);
+            // 
+            // lblFTP
+            // 
+            this.lblFTP.AutoSize = true;
+            this.lblFTP.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold);
+            this.lblFTP.ForeColor = System.Drawing.Color.Gray;
+            this.lblFTP.Location = new System.Drawing.Point(119, 44);
+            this.lblFTP.Name = "lblFTP";
+            this.lblFTP.Size = new System.Drawing.Size(63, 29);
+            this.lblFTP.TabIndex = 1;
+            this.lblFTP.Text = "FTP";
+            this.lblFTP.Click += new System.EventHandler(this.btnFTP_Click);
+            // 
+            // picFTP
+            // 
+            this.picFTP.Image = ((System.Drawing.Image)(resources.GetObject("picFTP.Image")));
+            this.picFTP.Location = new System.Drawing.Point(29, 34);
+            this.picFTP.Name = "picFTP";
+            this.picFTP.Size = new System.Drawing.Size(50, 50);
+            this.picFTP.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picFTP.TabIndex = 0;
+            this.picFTP.TabStop = false;
+            this.picFTP.Click += new System.EventHandler(this.btnFTP_Click);
+            // 
             // pnlOrders
             // 
-            this.pnlOrders.Classe = "FactoriesManagement";
-            this.pnlOrders.Descripcio = "Default";
+            this.pnlOrders.Classe = "EDIProcessor";
+            this.pnlOrders.Descripcio = "Orders";
             this.pnlOrders.DisplayPanel = this.panel3;
-            this.pnlOrders.Form = "frmFactoriesManagement";
-            this.pnlOrders.Location = new System.Drawing.Point(0, 466);
+            this.pnlOrders.Form = "frmOrdersProcessor";
+            this.pnlOrders.Location = new System.Drawing.Point(0, 425);
             this.pnlOrders.Name = "pnlOrders";
-            this.pnlOrders.PictureBoxImage = null;
-            this.pnlOrders.Size = new System.Drawing.Size(426, 180);
+            this.pnlOrders.PictureBoxImage = ((System.Drawing.Image)(resources.GetObject("pnlOrders.PictureBoxImage")));
+            this.pnlOrders.Size = new System.Drawing.Size(321, 120);
             this.pnlOrders.TabIndex = 4;
             // 
             // panel3
@@ -127,10 +167,10 @@ namespace OrionSecureCore
             this.pnlUsers.Descripcio = "Users";
             this.pnlUsers.DisplayPanel = this.panel3;
             this.pnlUsers.Form = "UserManagement";
-            this.pnlUsers.Location = new System.Drawing.Point(0, 266);
+            this.pnlUsers.Location = new System.Drawing.Point(0, 195);
             this.pnlUsers.Name = "pnlUsers";
             this.pnlUsers.PictureBoxImage = ((System.Drawing.Image)(resources.GetObject("pnlUsers.PictureBoxImage")));
-            this.pnlUsers.Size = new System.Drawing.Size(321, 194);
+            this.pnlUsers.Size = new System.Drawing.Size(321, 120);
             this.pnlUsers.TabIndex = 3;
             // 
             // pnlSpecies
@@ -142,7 +182,7 @@ namespace OrionSecureCore
             this.pnlSpecies.Location = new System.Drawing.Point(0, 78);
             this.pnlSpecies.Name = "pnlSpecies";
             this.pnlSpecies.PictureBoxImage = ((System.Drawing.Image)(resources.GetObject("pnlSpecies.PictureBoxImage")));
-            this.pnlSpecies.Size = new System.Drawing.Size(321, 194);
+            this.pnlSpecies.Size = new System.Drawing.Size(321, 120);
             this.pnlSpecies.TabIndex = 2;
             // 
             // MainScreen
@@ -161,6 +201,9 @@ namespace OrionSecureCore
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.pnlMenu.ResumeLayout(false);
+            this.pnlFTP.ResumeLayout(false);
+            this.pnlFTP.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picFTP)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -175,6 +218,9 @@ namespace OrionSecureCore
         private SWUserControls.FormLauncher pnlSpecies;
         private System.Windows.Forms.PictureBox pictureBox1;
         private SWUserControls.FormLauncher pnlOrders;
+        private System.Windows.Forms.Panel pnlFTP;
+        private System.Windows.Forms.PictureBox picFTP;
+        private System.Windows.Forms.Label lblFTP;
     }
 }
 
