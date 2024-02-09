@@ -253,6 +253,7 @@ namespace EDIProcessor
 
         private short GetReferenceId(string referenceCode)
         {
+
             return db.References
                      .Where(r => r.codeReference == referenceCode)
                      .Select(r => r.idReference)
