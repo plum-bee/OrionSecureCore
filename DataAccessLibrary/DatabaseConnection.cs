@@ -9,19 +9,28 @@ using System.Configuration;
 
 namespace DataAccessLibrary
 {
+    /// <summary>
+    /// Represents an abstract base class for database connections, encapsulating common functionality for managing connections and executing commands against a database.
+    /// </summary>
     public abstract class DatabaseConnection
     {
         private readonly string _connectionString;
         private readonly SqlConnection _sqlConnection;
         private DataSet _dataSet;
 
+        /// <summary>
+        /// Initializes a new instance of the DatabaseConnection class, setting up the connection string and initializing the SQL connection.
+        /// </summary>
         public DatabaseConnection()
         {
-            _connectionString = "Data Source=sqlserver.S2AM.sdslab.cat;Initial Catalog=SecureCoreG6;User Id=G6;Password=12345aAG62324.;";
-            //_connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+            // Example connection string removed for brevity
+            _connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
             _sqlConnection = new SqlConnection(_connectionString);
         }
 
+        /// <summary>
+        /// Opens the SQL connection if it is not already open.
+        /// </summary>
         private void OpenSqlConnection()
         {
             if (_sqlConnection.State != ConnectionState.Open)
@@ -30,6 +39,9 @@ namespace DataAccessLibrary
             }
         }
 
+        /// <summary>
+        /// Closes the SQL connection if it is open.
+        /// </summary>
         private void CloseSqlConnection()
         {
             if (_sqlConnection != null && _sqlConnection.State == ConnectionState.Open)
@@ -38,6 +50,16 @@ namespace DataAccessLibrary
             }
         }
 
+        /// <summary>
+        /// Retrieves all data from a specified table.
+        /// </summary>
+        /// <param name="tableName">The name of the table from which to retrieve data.</param>
+        /// <returns>A DataSet containing all rows from the specified table.</returns>
+        /// <example>
+        /// <code>
+        /// var dataSet = databaseConnection.RetrieveAllDataFromTable("Employees");
+        /// </code>
+        /// </example>
         public DataSet RetrieveAllDataFromTable(string tableName)
         {
             OpenSqlConnection();
@@ -55,6 +77,16 @@ namespace DataAccessLibrary
             return _dataSet;
         }
 
+        /// <summary>
+        /// Retrieves data using a specified SQL query.
+        /// </summary>
+        /// <param name="sqlQuery">The SQL query to execute.</param>
+        /// <returns>A DataSet containing the data retrieved by the query.</returns>
+        /// <example>
+        /// <code>
+        /// var dataSet = databaseConnection.RetrieveDataUsingQuery("SELECT * FROM Employees WHERE DepartmentID = 1");
+        /// </code>
+        /// </example>
         public DataSet RetrieveDataUsingQuery(string sqlQuery)
         {
             OpenSqlConnection();
@@ -70,7 +102,12 @@ namespace DataAccessLibrary
 
             return _dataSet;
         }
-
+        /// <summary>
+        /// Retrieves data using a specified SQL query and a table name to structure the DataSet.
+        /// </summary>
+        /// <param name="sqlQuery">The SQL query to execute for data retrieval.</param>
+        /// <param name="tableName">The name to assign to the resulting table within the DataSet.</param>
+        /// <returns>A DataSet containing the data retrieved, structured with the specified table name.</returns>
         public DataSet RetrieveDataUsingQuery(string sqlQuery, string tableName)
         {
             OpenSqlConnection();
@@ -87,6 +124,11 @@ namespace DataAccessLibrary
             return _dataSet;
         }
 
+        /// <summary>
+        /// Retrieves data using a specified SQL command.
+        /// </summary>
+        /// <param name="command">The SqlCommand to execute for data retrieval.</param>
+        /// <returns>A DataSet containing the data retrieved by executing the SqlCommand.</returns>
         public DataSet RetrieveDataUsingQuery(SqlCommand command)
         {
             SqlDataAdapter adapter = new SqlDataAdapter(command);
@@ -96,6 +138,11 @@ namespace DataAccessLibrary
             return dataSet;
         }
 
+        /// <summary>
+        /// Updates data in the database using a specified SQL query and a DataSet.
+        /// </summary>
+        /// <param name="sqlQuery">The SQL query to use for updating data.</param>
+        /// <param name="dataSetToUpdate">The DataSet containing the data to be updated in the database.</param>
         public void UpdateData(string sqlQuery, DataSet dataSetToUpdate)
         {
             OpenSqlConnection();
@@ -109,6 +156,10 @@ namespace DataAccessLibrary
             CloseSqlConnection();
         }
 
+        /// <summary>
+        /// Executes a SQL non-query command (e.g., INSERT, UPDATE, DELETE).
+        /// </summary>
+        /// <param name="sqlQuery">The SQL query to execute.</param>
         public void ExecuteSqlNonQuery(string sqlQuery)
         {
             OpenSqlConnection();
@@ -121,6 +172,12 @@ namespace DataAccessLibrary
             CloseSqlConnection();
         }
 
+        /// <summary>
+        /// Generates a SQL query command using a table name and a dictionary of field values.
+        /// </summary>
+        /// <param name="tableName">The name of the table to query.</param>
+        /// <param name="fieldValues">A dictionary containing field names and their corresponding values to include in the WHERE clause.</param>
+        /// <returns>A SqlCommand object ready to be executed.</returns>
         public SqlCommand GenerateQuery(string tableName, Dictionary<string, string> fieldValues)
         {
             StringBuilder query = new StringBuilder($"SELECT * FROM {tableName} WHERE ");
@@ -146,6 +203,10 @@ namespace DataAccessLibrary
             return command;
         }
 
+        /// <summary>
+        /// Executes a SQL command within a transaction, rolling back the transaction in case of an error.
+        /// </summary>
+        /// <param name="command">The SqlCommand to execute within a transaction.</param>
         public void ExecuteTransaction(SqlCommand command)
         {
             OpenSqlConnection();
@@ -171,7 +232,8 @@ namespace DataAccessLibrary
                 }
                 catch
                 {
-                    throw ex;
+
+                    throw;
                 }
             }
             finally

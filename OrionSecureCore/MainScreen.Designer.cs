@@ -37,9 +37,9 @@ namespace OrionSecureCore
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pnlMenu = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.pnlOrders = new SWUserControls.FormLauncher();
             this.pnlUsers = new SWUserControls.FormLauncher();
             this.pnlSpecies = new SWUserControls.FormLauncher();
-            this.formLauncher1 = new SWUserControls.FormLauncher();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlMenu.SuspendLayout();
@@ -91,7 +91,7 @@ namespace OrionSecureCore
             // pnlMenu
             // 
             this.pnlMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(45)))), ((int)(((byte)(145)))));
-            this.pnlMenu.Controls.Add(this.formLauncher1);
+            this.pnlMenu.Controls.Add(this.pnlOrders);
             this.pnlMenu.Controls.Add(this.pnlUsers);
             this.pnlMenu.Controls.Add(this.pnlSpecies);
             this.pnlMenu.Dock = System.Windows.Forms.DockStyle.Left;
@@ -108,6 +108,18 @@ namespace OrionSecureCore
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1025, 716);
             this.panel3.TabIndex = 5;
+            // 
+            // pnlOrders
+            // 
+            this.pnlOrders.Classe = "EDIProcessor";
+            this.pnlOrders.Descripcio = "Default";
+            this.pnlOrders.DisplayPanel = this.panel3;
+            this.pnlOrders.Form = "frmOrdersProcessor";
+            this.pnlOrders.Location = new System.Drawing.Point(0, 466);
+            this.pnlOrders.Name = "pnlOrders";
+            this.pnlOrders.PictureBoxImage = null;
+            this.pnlOrders.Size = new System.Drawing.Size(426, 180);
+            this.pnlOrders.TabIndex = 4;
             // 
             // pnlUsers
             // 
@@ -132,18 +144,6 @@ namespace OrionSecureCore
             this.pnlSpecies.PictureBoxImage = ((System.Drawing.Image)(resources.GetObject("pnlSpecies.PictureBoxImage")));
             this.pnlSpecies.Size = new System.Drawing.Size(321, 194);
             this.pnlSpecies.TabIndex = 2;
-            // 
-            // formLauncher1
-            // 
-            this.formLauncher1.Classe = null;
-            this.formLauncher1.Descripcio = "Factories";
-            this.formLauncher1.DisplayPanel = null;
-            this.formLauncher1.Form = null;
-            this.formLauncher1.Location = new System.Drawing.Point(0, 454);
-            this.formLauncher1.Name = "formLauncher1";
-            this.formLauncher1.PictureBoxImage = null;
-            this.formLauncher1.Size = new System.Drawing.Size(321, 194);
-            this.formLauncher1.TabIndex = 4;
             // 
             // MainScreen
             // 
@@ -174,7 +174,7 @@ namespace OrionSecureCore
         private SWUserControls.FormLauncher pnlUsers;
         private SWUserControls.FormLauncher pnlSpecies;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private SWUserControls.FormLauncher formLauncher1;
+        private SWUserControls.FormLauncher pnlOrders;
     }
 }
 
