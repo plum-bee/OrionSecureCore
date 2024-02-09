@@ -17,8 +17,8 @@ namespace DataAccessLibrary
 
         public DatabaseConnection()
         {
-            //_connectionString = "Data Source=sqlserver.S2AM.sdslab.cat;Initial Catalog=SecureCoreG6;User Id=G6;Password=12345aAG62324.;";
-            _connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+            _connectionString = "Data Source=sqlserver.S2AM.sdslab.cat;Initial Catalog=SecureCoreG6;User Id=G6;Password=12345aAG62324.;";
+            //_connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
             _sqlConnection = new SqlConnection(_connectionString);
         }
 
