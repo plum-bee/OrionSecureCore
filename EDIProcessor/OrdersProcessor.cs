@@ -9,6 +9,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CrystalDecisions.Shared;
+using CrystalDecisions.CrystalReports.Engine;
+using System.Configuration;
+using System.Data.SqlClient;
 
 namespace EDIProcessor
 {
@@ -19,6 +23,11 @@ namespace EDIProcessor
         OrderInfo newOrderInfo;
         OrdersDetail newOrderDetail;
         List<OrdersDetail> orderDetails;
+        ReportDocument reportDocument = new ReportDocument();
+        string report = "crOrder.rpt";
+        string _connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+        int idDarrer;
+        
 
         public frmOrdersProcessor()
         {
@@ -176,6 +185,7 @@ namespace EDIProcessor
 
                     db.Orders.Add(newOrder);
                     db.SaveChanges();
+                    idDarrer = newOrder.idOrder;
 
                     transaction.Commit();
                 }
@@ -270,6 +280,45 @@ namespace EDIProcessor
         private void btnLoadEdiFile_Click(object sender, EventArgs e)
         {
             LoadEDIOrder(LoadEDIFile());
+        }
+
+        private void rprtViewer_Load(object sender, EventArgs e)
+        {
+            reportDocument.Load(report);
+
+            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder(_connectionString);
+
+            string server = builder.DataSource;
+            string database = builder.InitialCatalog;
+            string user = builder.UserID;
+            string passwd = builder.Password;
+
+            ConnectionInfo crConnectionInfo = new ConnectionInfo();
+
+            crConnectionInfo.ServerName = server;
+            crConnectionInfo.DatabaseName = database;
+            crConnectionInfo.UserID = user;
+            crConnectionInfo.Password = passwd;
+
+            TableLogOnInfo crtableLogoninfo = new TableLogOnInfo();
+
+            Tables CrTables = reportDocument.Database.Tables;
+
+            foreach (Table CrTable in CrTables)
+            {
+                crtableLogoninfo = CrTable.LogOnInfo;
+                crtableLogoninfo.ConnectionInfo = crConnectionInfo;
+                CrTable.ApplyLogOnInfo(crtableLogoninfo);
+            }
+        }
+
+        private void btnReport_Click(object sender, EventArgs e)
+        {
+            rprtViewer.Visible = true;
+            rprtViewer.Enabled = true;
+            reportDocument.RecordSelectionFormula = "{Orders.idOrder} = " + idDarrer;
+            rprtViewer.ReportSource = reportDocument;
+            rprtViewer.RefreshReport();
         }
     }
 }
