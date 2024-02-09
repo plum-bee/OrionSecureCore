@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("OrdersManagement")]
+[assembly: AssemblyTitle("EDIProcessor")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("OrdersManagement")]
+[assembly: AssemblyProduct("EDIProcessor")]
 [assembly: AssemblyCopyright("Copyright ©  2024")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("577fb9cc-5a3f-4fd8-b558-88783cb67a99")]
+[assembly: Guid("1127ac3f-57ef-44a1-b3a2-b50420029050")]
 
 // Version information for an assembly consists of the following four values:
 //

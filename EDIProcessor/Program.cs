@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace OrdersManagement
+namespace EDIProcessor
 {
     static class Program
     {
@@ -16,7 +16,7 @@ namespace OrdersManagement
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new OrdersManagement());
+            Application.Run(new frmOrdersProcessor());
         }
     }
 }
