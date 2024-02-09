@@ -21,7 +21,7 @@ namespace OrionSecureCore
             InitializeComponent();
 
             pnlMenu.Width = 75;
-            tmr1.Interval = 30;
+            tmr1.Interval = 30; 
             tmr1.Tick += tmr1_Tick;
             
         }
