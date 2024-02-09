@@ -44,7 +44,7 @@ namespace SWUserControls
             this.pnlLauncher.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlLauncher.Location = new System.Drawing.Point(0, 0);
             this.pnlLauncher.Name = "pnlLauncher";
-            this.pnlLauncher.Size = new System.Drawing.Size(426, 180);
+            this.pnlLauncher.Size = new System.Drawing.Size(321, 120);
             this.pnlLauncher.TabIndex = 0;
             this.pnlLauncher.Click += new System.EventHandler(this.btnLauncher_Click);
             this.pnlLauncher.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlColor_Paint);
@@ -54,7 +54,7 @@ namespace SWUserControls
             this.lblDesc.AutoSize = true;
             this.lblDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDesc.ForeColor = System.Drawing.Color.White;
-            this.lblDesc.Location = new System.Drawing.Point(111, 66);
+            this.lblDesc.Location = new System.Drawing.Point(110, 42);
             this.lblDesc.Name = "lblDesc";
             this.lblDesc.Size = new System.Drawing.Size(92, 29);
             this.lblDesc.TabIndex = 1;
@@ -63,7 +63,7 @@ namespace SWUserControls
             // ptrIcon
             // 
             this.ptrIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ptrIcon.Location = new System.Drawing.Point(28, 54);
+            this.ptrIcon.Location = new System.Drawing.Point(27, 30);
             this.ptrIcon.Name = "ptrIcon";
             this.ptrIcon.Size = new System.Drawing.Size(50, 50);
             this.ptrIcon.TabIndex = 0;
@@ -76,7 +76,7 @@ namespace SWUserControls
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.pnlLauncher);
             this.Name = "FormLauncher";
-            this.Size = new System.Drawing.Size(426, 180);
+            this.Size = new System.Drawing.Size(321, 120);
             this.Load += new System.EventHandler(this.FormLauncher_Load);
             this.pnlLauncher.ResumeLayout(false);
             this.pnlLauncher.PerformLayout();

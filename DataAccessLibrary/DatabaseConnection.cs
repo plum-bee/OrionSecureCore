@@ -23,7 +23,6 @@ namespace DataAccessLibrary
         /// </summary>
         public DatabaseConnection()
         {
-            // Example connection string removed for brevity
             _connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
             _sqlConnection = new SqlConnection(_connectionString);
         }
