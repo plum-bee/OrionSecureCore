@@ -36,11 +36,11 @@ namespace OrionSecureCore
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pnlMenu = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.pnlFTP = new System.Windows.Forms.Panel();
-            this.picFTP = new System.Windows.Forms.PictureBox();
             this.lblFTP = new System.Windows.Forms.Label();
+            this.picFTP = new System.Windows.Forms.PictureBox();
             this.pnlOrders = new SWUserControls.FormLauncher();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.pnlUsers = new SWUserControls.FormLauncher();
             this.pnlSpecies = new SWUserControls.FormLauncher();
             this.panel1.SuspendLayout();
@@ -106,15 +106,6 @@ namespace OrionSecureCore
             this.pnlMenu.Size = new System.Drawing.Size(327, 716);
             this.pnlMenu.TabIndex = 4;
             // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(16)))), ((int)(((byte)(51)))));
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(327, 52);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1025, 716);
-            this.panel3.TabIndex = 5;
-            // 
             // pnlFTP
             // 
             this.pnlFTP.Controls.Add(this.lblFTP);
@@ -125,6 +116,18 @@ namespace OrionSecureCore
             this.pnlFTP.TabIndex = 6;
             this.pnlFTP.Click += new System.EventHandler(this.btnFTP_Click);
             this.pnlFTP.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlColor_Paint);
+            // 
+            // lblFTP
+            // 
+            this.lblFTP.AutoSize = true;
+            this.lblFTP.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold);
+            this.lblFTP.ForeColor = System.Drawing.Color.Gray;
+            this.lblFTP.Location = new System.Drawing.Point(119, 44);
+            this.lblFTP.Name = "lblFTP";
+            this.lblFTP.Size = new System.Drawing.Size(63, 29);
+            this.lblFTP.TabIndex = 1;
+            this.lblFTP.Text = "FTP";
+            this.lblFTP.Click += new System.EventHandler(this.btnFTP_Click);
             // 
             // picFTP
             // 
@@ -137,18 +140,6 @@ namespace OrionSecureCore
             this.picFTP.TabStop = false;
             this.picFTP.Click += new System.EventHandler(this.btnFTP_Click);
             // 
-            // lblFTP
-            // 
-            this.lblFTP.AutoSize = true;
-            this.lblFTP.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold);
-            this.lblFTP.ForeColor = System.Drawing.Color.White;
-            this.lblFTP.Location = new System.Drawing.Point(119, 44);
-            this.lblFTP.Name = "lblFTP";
-            this.lblFTP.Size = new System.Drawing.Size(63, 29);
-            this.lblFTP.TabIndex = 1;
-            this.lblFTP.Text = "FTP";
-            this.lblFTP.Click += new System.EventHandler(this.btnFTP_Click);
-            // 
             // pnlOrders
             // 
             this.pnlOrders.Classe = "EDIProcessor";
@@ -160,6 +151,15 @@ namespace OrionSecureCore
             this.pnlOrders.PictureBoxImage = ((System.Drawing.Image)(resources.GetObject("pnlOrders.PictureBoxImage")));
             this.pnlOrders.Size = new System.Drawing.Size(321, 120);
             this.pnlOrders.TabIndex = 4;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(16)))), ((int)(((byte)(51)))));
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(327, 52);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1025, 716);
+            this.panel3.TabIndex = 5;
             // 
             // pnlUsers
             // 
