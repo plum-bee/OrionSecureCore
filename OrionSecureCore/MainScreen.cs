@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace OrionSecureCore
 {
@@ -25,6 +26,14 @@ namespace OrionSecureCore
             
         }
 
+        private void pnlColor_Paint(object sender, PaintEventArgs e)
+        {
+            Color col = Color.White;
+            ButtonBorderStyle bbs = ButtonBorderStyle.Solid;
+            int grosor = 1;
+
+            ControlPaint.DrawBorder(e.Graphics, pnlFTP.ClientRectangle, col, grosor, bbs, col, grosor, bbs, col, grosor, bbs, col, grosor, bbs);
+        }
         private void tmr1_Tick(object sender, EventArgs e)
         {
             if (_pnlOpen)
@@ -47,6 +56,10 @@ namespace OrionSecureCore
             }
         }
 
+        private void btnFTP_Click(object sender, EventArgs e)
+        {
+            Process.Start("FTPDownload.exe", "arguments");
+        }
 
         private void btnMenu_Click(object sender, EventArgs e)
         {

@@ -18,8 +18,6 @@ namespace FTPDownload
 
                 string nombreArchivo = DescargarDesdeFTP(ftpServer, usuario, contrasena);
 
-                //ProcesarArchivo(nombreArchivo);
-
                 Console.ReadKey();
             }
             catch (Exception ex)
@@ -45,6 +43,19 @@ namespace FTPDownload
                 contrasena = reader.ReadElementContentAsString();
             }
         }
+
+        static void GuardarEnCarpeta(string nombreArchivo)
+        {
+            string carpetaDestino = Path.Combine(Directory.GetCurrentDirectory(), "EDIOrders");
+
+            if (!Directory.Exists(carpetaDestino))
+            {
+                Directory.CreateDirectory(carpetaDestino);
+            }
+
+            File.Move(nombreArchivo, Path.Combine(carpetaDestino, nombreArchivo));
+        }
+
 
         static string DescargarDesdeFTP(string server, string usuario, string contrasena)
         {
@@ -74,6 +85,8 @@ namespace FTPDownload
                     }
 
                     Console.WriteLine("Archivo descargado exitosamente!");
+
+                    GuardarEnCarpeta(nombreArchivo);
                 }
             }
             catch (Exception ex)
@@ -85,43 +98,5 @@ namespace FTPDownload
             return nombreArchivo;
         }
 
-        //static void ProcesarArchivo(string filePath)
-        //{
-        //    try
-        //    {
-        //        using (StreamReader reader = new StreamReader(filePath))
-        //        {
-        //            string line;
-        //            while ((line = reader.ReadLine()) != null)
-        //            {
-        //                if (line.StartsWith("LIN"))
-        //                {
-        //                    string[] fields = line.Split('|');
-        //                    if (fields.Length >= 4)
-        //                    {
-        //                        Console.WriteLine($"Nave: {fields[3]}");
-        //                    }
-        //                }
-        //            }
-        //        }
-
-        //        string tractatsFolder = Path.Combine(Path.GetDirectoryName(filePath), "tractats");
-        //        if (!Directory.Exists(tractatsFolder))
-        //        {
-        //            Directory.CreateDirectory(tractatsFolder);
-        //        }
-
-        //        string nuevoNombre = Path.Combine(tractatsFolder, $"OK_{Path.GetFileName(filePath)}");
-        //        File.Move(filePath, nuevoNombre);
-
-        //        Console.WriteLine($"Archivo procesado y movido a: {nuevoNombre}");
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Console.WriteLine($"Error: {ex.Message}");
-        //    }
-
-
-        //}
     }
 }
