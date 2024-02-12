@@ -31,16 +31,16 @@ namespace OrionSecureCore
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainScreen));
-            this.tmr1 = new System.Windows.Forms.Timer(this.components);
+            this.tmrSplash = new System.Windows.Forms.Timer(this.components);
             this.btnMenu = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pnlMenu = new System.Windows.Forms.Panel();
+            this.frmLauncherFactories = new SWUserControls.FormLauncher();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.pnlFTP = new System.Windows.Forms.Panel();
             this.lblFTP = new System.Windows.Forms.Label();
             this.picFTP = new System.Windows.Forms.PictureBox();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.frmLauncherFactories = new SWUserControls.FormLauncher();
             this.pnlOrders = new SWUserControls.FormLauncher();
             this.pnlUsers = new SWUserControls.FormLauncher();
             this.pnlSpecies = new SWUserControls.FormLauncher();
@@ -51,9 +51,9 @@ namespace OrionSecureCore
             ((System.ComponentModel.ISupportInitialize)(this.picFTP)).BeginInit();
             this.SuspendLayout();
             // 
-            // tmr1
+            // tmrSplash
             // 
-            this.tmr1.Tick += new System.EventHandler(this.tmr1_Tick);
+            this.tmrSplash.Tick += new System.EventHandler(this.tmr1_Tick);
             // 
             // btnMenu
             // 
@@ -108,6 +108,27 @@ namespace OrionSecureCore
             this.pnlMenu.Size = new System.Drawing.Size(327, 716);
             this.pnlMenu.TabIndex = 4;
             // 
+            // frmLauncherFactories
+            // 
+            this.frmLauncherFactories.FormClass = "FactoriesManagement";
+            this.frmLauncherFactories.Description = "Factories";
+            this.frmLauncherFactories.DisplayPanel = this.panel3;
+            this.frmLauncherFactories.Form = "frmFactoriesManagement";
+            this.frmLauncherFactories.Location = new System.Drawing.Point(0, 542);
+            this.frmLauncherFactories.Name = "frmLauncherFactories";
+            this.frmLauncherFactories.PictureBoxImage = ((System.Drawing.Image)(resources.GetObject("frmLauncherFactories.PictureBoxImage")));
+            this.frmLauncherFactories.Size = new System.Drawing.Size(321, 120);
+            this.frmLauncherFactories.TabIndex = 7;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(16)))), ((int)(((byte)(51)))));
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(327, 52);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1025, 716);
+            this.panel3.TabIndex = 5;
+            // 
             // pnlFTP
             // 
             this.pnlFTP.Controls.Add(this.lblFTP);
@@ -142,31 +163,10 @@ namespace OrionSecureCore
             this.picFTP.TabStop = false;
             this.picFTP.Click += new System.EventHandler(this.btnFTP_Click);
             // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(16)))), ((int)(((byte)(51)))));
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(327, 52);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1025, 716);
-            this.panel3.TabIndex = 5;
-            // 
-            // frmLauncherFactories
-            // 
-            this.frmLauncherFactories.Classe = "FactoriesManagement";
-            this.frmLauncherFactories.Descripcio = "Factories";
-            this.frmLauncherFactories.DisplayPanel = this.panel3;
-            this.frmLauncherFactories.Form = "frmFactoriesManagement";
-            this.frmLauncherFactories.Location = new System.Drawing.Point(0, 542);
-            this.frmLauncherFactories.Name = "frmLauncherFactories";
-            this.frmLauncherFactories.PictureBoxImage = ((System.Drawing.Image)(resources.GetObject("frmLauncherFactories.PictureBoxImage")));
-            this.frmLauncherFactories.Size = new System.Drawing.Size(321, 120);
-            this.frmLauncherFactories.TabIndex = 7;
-            // 
             // pnlOrders
             // 
-            this.pnlOrders.Classe = "EDIProcessor";
-            this.pnlOrders.Descripcio = "Orders";
+            this.pnlOrders.FormClass = "EDIProcessor";
+            this.pnlOrders.Description = "Orders";
             this.pnlOrders.DisplayPanel = this.panel3;
             this.pnlOrders.Form = "frmOrdersProcessor";
             this.pnlOrders.Location = new System.Drawing.Point(0, 425);
@@ -177,8 +177,8 @@ namespace OrionSecureCore
             // 
             // pnlUsers
             // 
-            this.pnlUsers.Classe = "UserManagement";
-            this.pnlUsers.Descripcio = "Users";
+            this.pnlUsers.FormClass = "UserManagement";
+            this.pnlUsers.Description = "Users";
             this.pnlUsers.DisplayPanel = this.panel3;
             this.pnlUsers.Form = "UserManagement";
             this.pnlUsers.Location = new System.Drawing.Point(0, 195);
@@ -189,8 +189,8 @@ namespace OrionSecureCore
             // 
             // pnlSpecies
             // 
-            this.pnlSpecies.Classe = "SpeciesManagement";
-            this.pnlSpecies.Descripcio = "Species";
+            this.pnlSpecies.FormClass = "SpeciesManagement";
+            this.pnlSpecies.Description = "Species";
             this.pnlSpecies.DisplayPanel = this.panel3;
             this.pnlSpecies.Form = "SpeciesManagement";
             this.pnlSpecies.Location = new System.Drawing.Point(0, 78);
@@ -223,7 +223,7 @@ namespace OrionSecureCore
         }
 
         #endregion
-        private System.Windows.Forms.Timer tmr1;
+        private System.Windows.Forms.Timer tmrSplash;
         private System.Windows.Forms.Button btnMenu;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel pnlMenu;

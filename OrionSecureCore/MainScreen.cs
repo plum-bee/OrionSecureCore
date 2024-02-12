@@ -21,8 +21,8 @@ namespace OrionSecureCore
             InitializeComponent();
 
             pnlMenu.Width = 75;
-            tmr1.Interval = 30; 
-            tmr1.Tick += tmr1_Tick;
+            tmrSplash.Interval = 30; 
+            tmrSplash.Tick += tmr1_Tick;
             
         }
 
@@ -41,7 +41,7 @@ namespace OrionSecureCore
                 pnlMenu.Width -= 10;
                 if (pnlMenu.Width <= 75)
                 {
-                    tmr1.Stop();
+                    tmrSplash.Stop();
                     _pnlOpen = false;
                 }
             }
@@ -50,7 +50,7 @@ namespace OrionSecureCore
                 pnlMenu.Width += 10;
                 if (pnlMenu.Width >= 250)
                 {
-                    tmr1.Stop();
+                    tmrSplash.Stop();
                     _pnlOpen = true;
                 }
             }
@@ -58,12 +58,30 @@ namespace OrionSecureCore
 
         private void btnFTP_Click(object sender, EventArgs e)
         {
-            Process.Start("FTPDownload.exe", "arguments");
+            string executablePath = "FTPDownload.exe";
+
+
+            if (System.IO.File.Exists(executablePath))
+            {
+                try
+                {
+                    Process.Start(executablePath);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Failed to start. Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show($"The console file '{executablePath}' was not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
 
         private void btnMenu_Click(object sender, EventArgs e)
         {
-            tmr1.Start();
+            tmrSplash.Start();
         }
 
     }

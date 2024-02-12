@@ -16,7 +16,7 @@ namespace SWUserControls
 
         private string _classe;
         private string _form;
-        private string _descripcio = "Default";
+        private string _description = "Default";
         private Panel _displayPanel;
 
         public Panel DisplayPanel
@@ -32,7 +32,7 @@ namespace SWUserControls
                 ptrIcon.SizeMode = PictureBoxSizeMode.Zoom;
             }
         }
-        public string Classe
+        public string FormClass
         {
             get { return _classe; }
             set { _classe = value; }
@@ -44,15 +44,57 @@ namespace SWUserControls
             set { _form = value; }
         }
 
-        public string Descripcio
+        public string Description
         {
-            get { return _descripcio; }
-            set { _descripcio = value; }
+            get { return _description; }
+            set { _description = value; }
         }
 
         public FormLauncher()
         {
             InitializeComponent();
+        }
+
+        private void LaunchForm()
+        {
+            if (!string.IsNullOrWhiteSpace(FormClass) && !string.IsNullOrWhiteSpace(Form))
+            {
+                try
+                {
+                    Assembly assembly = Assembly.LoadFrom(FormClass + ".dll");
+
+                    Type formType = assembly.GetType(FormClass + "." + Form);
+
+                    if (formType != null && formType.IsSubclassOf(typeof(Form)))
+                    {
+                        Form form = (Form)Activator.CreateInstance(formType);
+                        form.Text = Description;
+
+                        if (DisplayPanel != null)
+                        {
+                            DisplayPanel.Controls.Clear();
+                            form.TopLevel = false;
+                            form.FormBorderStyle = FormBorderStyle.FixedSingle;
+                            form.Dock = DockStyle.Fill;
+                            DisplayPanel.Controls.Add(form);
+                            form.BringToFront();
+                            form.Show();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Form not found.");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Unable to open form: " + ex.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Class and/or Form not defined.");
+            }
         }
 
         private void pnlColor_Paint(object sender, PaintEventArgs e)
@@ -67,92 +109,18 @@ namespace SWUserControls
 
         private void btnLauncher_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(Classe) && !string.IsNullOrWhiteSpace(Form))
-            {
-                try
-                {
-                    Assembly assembly = Assembly.LoadFrom(Classe + ".dll");
-
-                    Type formType = assembly.GetType(Classe + "." + Form);
-
-                    if (formType != null && formType.IsSubclassOf(typeof(Form)))
-                    {
-                        Form form = (Form)Activator.CreateInstance(formType);
-                        form.Text = Descripcio;
-
-                        if (DisplayPanel != null)
-                        {
-                            DisplayPanel.Controls.Clear(); 
-                            form.TopLevel = false;
-                            form.FormBorderStyle = FormBorderStyle.FixedSingle;
-                            form.Dock = DockStyle.Fill;
-                            DisplayPanel.Controls.Add(form);
-                            form.BringToFront();
-                            form.Show();
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Formulario no encontrado.");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error al abrir el formulario: " + ex.Message);
-                }
-            }
-            else
-            {
-                MessageBox.Show("Classe o Form no definidos.");
-            }
-        }
+            LaunchForm();
+        }   
 
         private void FormLauncher_Load(object sender, EventArgs e)
         {
-            lblDesc.Text = Descripcio;
+            lblDesc.Text = Description;
             ptrIcon.Image = PictureBoxImage;
         }
 
         private void ptrIcon_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(Classe) && !string.IsNullOrWhiteSpace(Form))
-            {
-                try
-                {
-                    Assembly assembly = Assembly.LoadFrom(Classe + ".dll");
-
-                    Type formType = assembly.GetType(Classe + "." + Form);
-
-                    if (formType != null && formType.IsSubclassOf(typeof(Form)))
-                    {
-                        Form form = (Form)Activator.CreateInstance(formType);
-                        form.Text = Descripcio;
-
-                        if (DisplayPanel != null)
-                        {
-                            DisplayPanel.Controls.Clear();
-                            form.TopLevel = false;
-                            form.FormBorderStyle = FormBorderStyle.FixedToolWindow;
-                            form.Dock = DockStyle.Fill;
-                            DisplayPanel.Controls.Add(form);
-                            form.BringToFront();
-                            form.Show();
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Formulario no encontrado.");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error al abrir el formulario: " + ex.Message);
-                }
-            }
-            else
-            {
-                MessageBox.Show("Classe o Form no definidos.");
-            }
+            LaunchForm();
         }
     }
 }
