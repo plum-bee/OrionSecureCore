@@ -84,11 +84,5 @@
             <param name="fieldValues">A dictionary containing field names and their corresponding values to include in the WHERE clause.</param>
             <returns>A SqlCommand object ready to be executed.</returns>
         </member>
-        <member name="M:DataAccessLibrary.DatabaseConnection.ExecuteTransaction(System.Data.SqlClient.SqlCommand)">
-            <summary>
-            Executes a SQL command within a transaction, rolling back the transaction in case of an error.
-            </summary>
-            <param name="command">The SqlCommand to execute within a transaction.</param>
-        </member>
     </members>
 </doc>

@@ -201,45 +201,5 @@ namespace DataAccessLibrary
 
             return command;
         }
-
-        /// <summary>
-        /// Executes a SQL command within a transaction, rolling back the transaction in case of an error.
-        /// </summary>
-        /// <param name="command">The SqlCommand to execute within a transaction.</param>
-        public void ExecuteTransaction(SqlCommand command)
-        {
-            OpenSqlConnection();
-
-            SqlTransaction transaction = null;
-
-            try
-            {
-                transaction = _sqlConnection.BeginTransaction();
-
-                command.Connection = _sqlConnection;
-                command.Transaction = transaction;
-
-                command.ExecuteNonQuery();
-
-                transaction.Commit();
-            }
-            catch (Exception ex)
-            {
-                try
-                {
-                    transaction?.Rollback();
-                }
-                catch
-                {
-
-                    throw;
-                }
-            }
-            finally
-            {
-                CloseSqlConnection();
-            }
-        }
-
     }
 }

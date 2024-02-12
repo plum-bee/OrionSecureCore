@@ -30,10 +30,13 @@ namespace OrionSecureCore
             login = txtUserLogin.Text;
             string password = txtPasswordLogin.Text;
 
-            string query = $"SELECT * FROM Users WHERE Login = '{login}'";
+            var parameters = new Dictionary<string, string>
+            {
+                {"Login", login}
+            };
 
-            DataSet usersDataset = connectionComponent.RetrieveDataUsingQuery(query);
-
+            SqlCommand command = connectionComponent.GenerateQuery("Users", parameters);
+            DataSet usersDataset = connectionComponent.RetrieveDataUsingQuery(command);
             DataTable usersTable = usersDataset.Tables[0];
 
             if (usersTable.Rows.Count > 0)
@@ -81,10 +84,13 @@ namespace OrionSecureCore
 
         private string GetSaltFromDatabase(string login)
         {
-            string query = $"SELECT Salt FROM Users WHERE Login = '{login}'";
+            var parameters = new Dictionary<string, string>
+            {
+                {"Login", login}
+            };
 
-            DataSet saltDataset = connectionComponent.RetrieveDataUsingQuery(query);
-
+            SqlCommand command = connectionComponent.GenerateQuery("Users", parameters);
+            DataSet saltDataset = connectionComponent.RetrieveDataUsingQuery(command);
             DataTable saltTable = saltDataset.Tables[0];
 
             if (saltTable.Rows.Count > 0)
