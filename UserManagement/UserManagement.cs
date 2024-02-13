@@ -9,6 +9,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DataAccessLibrary;
 using DataAccess;
+using CrystalDecisions.Shared;
+using CrystalDecisions.CrystalReports.Engine;
+using System.Configuration;
+using System.Data.SqlClient;
 
 namespace UserManagement
 {
@@ -45,6 +49,30 @@ namespace UserManagement
             MyTable.Columns["DescSpecie"].HeaderText = "Specie";
             MyTable.Columns["DescCategory"].HeaderText = "Category";
             MyTable.Columns["DescRank"].HeaderText = "Rank";
+        }
+
+        private void btnReport_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Load the report
+                var report = "UsersReport.rpt";
+                var reportDocument = new ReportDocument();
+                reportDocument.Load(report);
+
+                // Show the report
+                var reportViewerForm = new Form();
+                var crystalReportViewer = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
+                crystalReportViewer.Dock = DockStyle.Fill;
+                reportViewerForm.Controls.Add(crystalReportViewer);
+
+                crystalReportViewer.ReportSource = reportDocument;
+                reportViewerForm.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error displaying report: {ex.Message}");
+            }
         }
     }
 }
