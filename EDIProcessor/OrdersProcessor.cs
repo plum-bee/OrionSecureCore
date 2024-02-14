@@ -117,6 +117,7 @@ namespace EDIProcessor
             }
         }
 
+
         private void DisplayOrder(Order order)
         {
             var query = from o in db.Orders
