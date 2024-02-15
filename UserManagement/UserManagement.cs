@@ -67,6 +67,7 @@ namespace UserManagement
                 reportViewerForm.Controls.Add(crystalReportViewer);
 
                 crystalReportViewer.ReportSource = reportDocument;
+                reportViewerForm.WindowState = FormWindowState.Maximized;
                 reportViewerForm.ShowDialog();
             }
             catch (Exception ex)

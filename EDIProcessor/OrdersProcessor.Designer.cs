@@ -52,10 +52,11 @@ namespace EDIProcessor
             // 
             // btnLoadEdiFile
             // 
+            this.btnLoadEdiFile.Font = new System.Drawing.Font("Fira Code", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLoadEdiFile.Location = new System.Drawing.Point(14, 13);
             this.btnLoadEdiFile.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnLoadEdiFile.Name = "btnLoadEdiFile";
-            this.btnLoadEdiFile.Size = new System.Drawing.Size(84, 29);
+            this.btnLoadEdiFile.Size = new System.Drawing.Size(100, 40);
             this.btnLoadEdiFile.TabIndex = 1;
             this.btnLoadEdiFile.Text = "Load";
             this.btnLoadEdiFile.UseVisualStyleBackColor = true;
@@ -74,10 +75,11 @@ namespace EDIProcessor
             // 
             // btnReport
             // 
+            this.btnReport.Font = new System.Drawing.Font("Fira Code", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReport.Location = new System.Drawing.Point(121, 13);
             this.btnReport.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnReport.Name = "btnReport";
-            this.btnReport.Size = new System.Drawing.Size(84, 29);
+            this.btnReport.Size = new System.Drawing.Size(100, 40);
             this.btnReport.TabIndex = 8;
             this.btnReport.Text = "Report";
             this.btnReport.UseVisualStyleBackColor = true;

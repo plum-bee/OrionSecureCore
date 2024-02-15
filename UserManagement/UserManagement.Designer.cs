@@ -158,6 +158,7 @@ namespace UserManagement
             // 
             // btnReport
             // 
+            this.btnReport.Font = new System.Drawing.Font("Fira Code", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReport.Location = new System.Drawing.Point(1046, 271);
             this.btnReport.Name = "btnReport";
             this.btnReport.Size = new System.Drawing.Size(111, 50);
