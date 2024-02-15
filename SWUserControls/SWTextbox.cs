@@ -21,7 +21,7 @@ namespace SWUserControls
         public bool AllowEmpty { get; set; }
         public bool IsForeignKey { get; set; }
         public string ControlName { get; set; }
-        public System.Drawing.Color FocusColor { get; set; } = System.Drawing.Color.Yellow;
+        public System.Drawing.Color FocusColor { get; set; } = System.Drawing.Color.White;
         public System.Drawing.Color DefaultColor { get; set; } = System.Drawing.SystemColors.Window;
 
         private static readonly Regex RegexCode = new Regex(@"^[AEIOU][A-Z]{3}[0-9]{2}[13579]$");
